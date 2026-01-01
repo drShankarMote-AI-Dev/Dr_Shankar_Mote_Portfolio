@@ -1262,11 +1262,7 @@ def log_admin_activity(action, section, details=None):
     with open(LOG_FILE, 'a', encoding='utf-8') as f:
         f.write(log_entry)
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     initialize_json_data()
     port = int(os.environ.get("PORT", 3000))
-    print("🚀 Portfolio application starting...")
-    print(f"📱 Portfolio: http://localhost:{port}/")
-    print(f"🔐 Admin: http://localhost:{port}/login")
-    print("💡 Press CTRL+C to stop the server")
     app.run(host="0.0.0.0", port=port)
