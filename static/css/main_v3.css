@@ -975,16 +975,17 @@ body.light-mode .hero-highlight {
 /* =============================
    Profile Image Styles
 ============================= */
-.profile-image-wrapper {
-  width: 650px;
-  height: 650px;
-  margin: 2.5rem auto 2.5rem auto;
+.profile-image-wrapper,
+.hero-profile .profile-image-wrapper {
+  width: 280px;
+  height: 280px;
+  margin: 2rem auto;
   border-radius: 50%;
   overflow: hidden;
   position: relative;
   background: transparent;
-  padding: 22px;
-  /* Increased default profile image size */
+  padding: 15px;
+  /* Compact profile image size like admin page */
 }
 
 .profile-image {
@@ -1004,10 +1005,10 @@ body.light-mode .hero-highlight {
 
 .profile-image-border {
   position: absolute;
-  top: -28px;
-  left: -28px;
-  right: -28px;
-  bottom: -28px;
+  top: -12px;
+  left: -12px;
+  right: -12px;
+  bottom: -12px;
   border-radius: 50%;
   background: linear-gradient(45deg, #ff6a00, #ee0979, #00c3ff);
   z-index: 0;
@@ -1264,21 +1265,22 @@ body.light-mode .colorful-hero .cta-btn:hover {
     justify-content: center;
   }
 
-  .profile-image-wrapper {
-    width: 450px;
-    height: 450px;
+  .profile-image-wrapper,
+  .hero-profile .profile-image-wrapper {
+    width: 250px;
+    height: 250px;
     max-width: 90vw;
     max-height: 90vw;
-    margin: 2rem auto 2rem auto;
+    margin: 1.5rem auto;
     padding: 12px;
-    /* Increased profile image size for tablets */
+    /* Compact profile image size for tablets */
   }
 
   .profile-image-border {
-    top: -16px;
-    left: -16px;
-    right: -16px;
-    bottom: -16px;
+    top: -8px;
+    left: -8px;
+    right: -8px;
+    bottom: -8px;
   }
 
   .hero-cta {
@@ -1307,12 +1309,13 @@ body.light-mode .colorful-hero .cta-btn:hover {
     gap: 1.2rem;
   }
 
-  .profile-image-wrapper {
+  .profile-image-wrapper,
+  .hero-profile .profile-image-wrapper {
     width: 90vw;
     height: 90vw;
-    max-width: 400px;
-    max-height: 400px;
-    /* Increased profile image size for small mobile */
+    max-width: 220px;
+    max-height: 220px;
+    /* Compact profile image size for small mobile */
   }
 
   .hero-content {
@@ -1381,15 +1384,16 @@ body.light-mode .colorful-hero .cta-btn:hover {
     flex: 0 0 auto;
     display: flex;
     align-items: center;
-    justify-content: flex-end;
-    margin-right: 2.5rem;
+    justify-content: center;
+    margin-right: 0;
   }
 
-  .profile-image-wrapper {
-    width: 720px;
-    height: 720px;
-    margin: 0;
-    /* Increased profile image size for desktop */
+  .profile-image-wrapper,
+  .hero-profile .profile-image-wrapper {
+    width: 320px;
+    height: 320px;
+    margin: 0 auto;
+    /* Compact profile image size for desktop */
   }
 
   .hero-content {
@@ -1426,23 +1430,24 @@ body.light-mode .colorful-hero .cta-btn:hover {
     gap: 5rem;
   }
 
-  .profile-image-wrapper {
-    width: 850px;
-    height: 850px;
-    max-width: 850px;
-    max-height: 850px;
-    margin-left: 0;
-    margin-right: 3rem;
-    transform: translate(-20px, -40px);
-    /* Increased profile image size for large screens */
+  .profile-image-wrapper,
+  .hero-profile .profile-image-wrapper {
+    width: 350px;
+    height: 350px;
+    max-width: 350px;
+    max-height: 350px;
+    margin: 0 auto;
+    transform: none;
+    /* Compact profile image size for large screens */
   }
 
-  .profile-image {
-    width: 820px;
-    height: 820px;
-    max-width: 820px;
-    max-height: 820px;
-    /* Increased profile image size */
+  .profile-image,
+  .hero-profile .profile-image {
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    /* Compact profile image size */
   }
 
   .profile-image-border {
@@ -3036,8 +3041,8 @@ body.light-mode .tech-tag {
 
 .profile-image-wrapper {
   position: relative;
-  width: 200px;
-  height: 200px;
+  width: 280px;
+  height: 280px;
   margin: 0 auto;
 }
 
@@ -3054,10 +3059,10 @@ body.light-mode .tech-tag {
 
 .profile-image-border {
   position: absolute;
-  top: -8px;
-  left: -8px;
-  right: -8px;
-  bottom: -8px;
+  top: -12px;
+  left: -12px;
+  right: -12px;
+  bottom: -12px;
   border-radius: 50%;
   background: linear-gradient(45deg, #ff6a00, #ee0979, #00c3ff);
   z-index: 0;
@@ -3086,15 +3091,78 @@ body.light-mode .profile-image {
 /* Responsive Adjustments */
 @media (max-width: 768px) {
   .profile-image-wrapper {
-    width: 150px;
-    height: 150px;
+    width: 250px;
+    height: 250px;
+    max-width: 90vw;
+    max-height: 90vw;
   }
 }
 
 @media (max-width: 480px) {
   .profile-image-wrapper {
-    width: 120px;
-    height: 120px;
+    width: 90vw;
+    height: 90vw;
+    max-width: 220px;
+    max-height: 220px;
+  }
+}
+
+/* Hero Section Profile Image Overrides - Compact size like admin page */
+.hero-profile .profile-image-wrapper {
+  width: 280px !important;
+  height: 280px !important;
+  margin: 2rem auto !important;
+}
+
+.hero-profile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (min-width: 769px) {
+  .hero-profile .profile-image-wrapper {
+    width: 320px !important;
+    height: 320px !important;
+    margin: 0 auto !important;
+  }
+}
+
+@media (min-width: 1200px) {
+  .hero-profile .profile-image-wrapper {
+    width: 350px !important;
+    height: 350px !important;
+    max-width: 350px !important;
+    max-height: 350px !important;
+    margin: 0 auto !important;
+    transform: none !important;
+  }
+  
+  .hero-profile .profile-image {
+    width: 100% !important;
+    height: 100% !important;
+    max-width: 100% !important;
+    max-height: 100% !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-profile .profile-image-wrapper {
+    width: 250px !important;
+    height: 250px !important;
+    max-width: 90vw !important;
+    max-height: 90vw !important;
+    margin: 1.5rem auto !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero-profile .profile-image-wrapper {
+    width: 90vw !important;
+    height: 90vw !important;
+    max-width: 220px !important;
+    max-height: 220px !important;
+    margin: 1rem auto !important;
   }
 }
 

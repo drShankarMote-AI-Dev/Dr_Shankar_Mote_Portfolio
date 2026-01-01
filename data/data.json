@@ -8,7 +8,7 @@
             "id": "main",
             "name": "Main Portfolio",
             "description": "Primary portfolio showcasing biotechnology and web development expertise",
-            "is_active": false,
+            "is_active": true,
             "created_at": "2024-01-01",
             "updated_at": "2024-01-01",
             "about": {
@@ -453,7 +453,7 @@
             "id": "socanalyst",
             "name": "SOC Analyst / Cybersecurity",
             "description": "Security Operations Center Analyst & Cybersecurity Specialist",
-            "is_active": true,
+            "is_active": false,
             "created_at": "2024-01-01",
             "updated_at": "2024-01-01",
             "about": {
@@ -733,7 +733,7 @@
     },
     "settings": {
         "site_title": "SSU",
-        "default_portfolio": "socanalyst",
+        "default_portfolio": "main",
         "allow_public_access": true,
         "maintenance_mode": false,
         "default_theme": "Default Dark",

@@ -237,3 +237,5 @@
 [2025-12-31 00:11:23] | user=admin | action=login | section=auth | details=username=admin
 [2025-12-31 00:11:47] | user=admin | action=update | section=system_settings | details=default_portfolio=socanalyst, allow_public_access=True, maintenance_mode=False, default_theme=Default Dark, section_alignment=center
 [2025-12-31 09:34:59] | user=admin | action=login | section=auth | details=username=admin
+[2026-01-02 00:12:46] | user=admin | action=login | section=auth | details=username=admin
+[2026-01-02 00:13:01] | user=admin | action=update | section=system_settings | details=default_portfolio=main, allow_public_access=True, maintenance_mode=False, default_theme=Default Dark, section_alignment=center
