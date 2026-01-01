@@ -1,0 +1,939 @@
+{
+    "admin_credentials": {
+        "username": "admin",
+        "password_hash": "pbkdf2:sha256:600000$Jrx0vSf6INC2FRTh$2a129bd1a38a843e6e51a5e0e7c2f9d55491a8a7da51570c0763cf0df1ddc5f1"
+    },
+    "portfolios": [
+        {
+            "id": "main",
+            "name": "Main Portfolio",
+            "description": "Primary portfolio showcasing biotechnology and web development expertise",
+            "is_active": true,
+            "created_at": "2024-01-01",
+            "updated_at": "2024-01-01",
+            "about": {
+                "hero_title": "Hi, I'm Shankar Managini Mote",
+                "hero_subtitle": "Biotechnology & Web Development Professional",
+                "hero_description": "Passionate about combining biotechnology with modern web technologies to create innovative solutions.",
+                "about_text": "B.Tech Biotechnology graduate with a unique blend of expertise in bioinformatics, DNA barcoding, molecular diagnostics, and web-based biomedical tools. I bridge the gap between biotechnology and modern web development to create innovative solutions.",
+                "highlight1_emoji": "🔬",
+                "highlight1_title": "Biotechnology Expert",
+                "highlight1_description": "Specialized in DNA barcoding and molecular diagnostics",
+                "highlight2_emoji": "💻",
+                "highlight2_title": "Web Developer",
+                "highlight2_description": "Creating modern web applications for biomedical research",
+                "highlight3_emoji": "🔍",
+                "highlight3_title": "Research Enthusiast",
+                "highlight3_description": "Passionate about innovative solutions in biotechnology",
+                "hero_buttons": [
+                    {
+                        "text": "Download Resume",
+                        "link": "/static/documents/Your_Resume.pdf",
+                        "icon": "📄",
+                        "is_visible": true
+                    },
+                    {
+                        "text": "Contact Me",
+                        "link": "#contact",
+                        "icon": "📬",
+                        "is_visible": true
+                    },
+                    {
+                        "text": "View My Work",
+                        "link": "#projects",
+                        "icon": "🚀",
+                        "is_visible": true
+                    }
+                ]
+            },
+            "profile_picture": {
+                "filename": "shankar.jpeg",
+                "filepath": "/static/images/shankar.jpeg"
+            },
+            "skills": {
+                "technical": [
+                    {
+                        "name": "HTML5 & CSS3",
+                        "description": "Strong command of semantic HTML and modern CSS techniques, including responsive design.",
+                        "icon": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\" style=\"vertical-align:middle;\"><path d=\"M1.5 0L3.27 21.6L12 24L20.73 21.6L22.5 0H1.5ZM17.19 7.5H7.02L7.2 9.6H17.01L16.65 13.2L12 14.4L7.35 13.2L7.08 10.8H9.12L9.27 12.3L12 12.96L14.73 12.3L15.03 9.6H6.99L6.81 7.5H17.19ZM12 22.08L4.5 20.16L3.03 2.4H20.97L19.5 20.16L12 22.08Z\" fill=\"#E44D26\"/><path d=\"M12 21.12L19.5 19.2L20.97 2.4H12V21.12Z\" fill=\"#F16529\"/><path d=\"M12 12.96L9.27 12.3L9.12 10.8H12V12.96ZM12 12.96L14.73 12.3L15.03 9.6H12V12.96Z\" fill=\"#EBEBEB\"/><path d=\"M12 14.4L16.65 13.2L17.01 9.6H12V14.4Z\" fill=\"#EBEBEB\"/><path d=\"M12 14.4L7.35 13.2L7.08 10.8H12V14.4Z\" fill=\"#fff\"/></svg>"
+                    },
+                    {
+                        "name": "JavaScript",
+                        "description": "Experienced in front-end development, DOM manipulation, and interactive web applications.",
+                        "icon": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\" style=\"vertical-align:middle;\"><rect width=\"24\" height=\"24\" rx=\"4\" fill=\"#F7DF1E\"/><path d=\"M6.5 17.5L8.1 16.4C8.5 17.1 8.9 17.6 9.7 17.6C10.4 17.6 10.8 17.2 10.8 16.7V11.3H12.6V16.7C12.6 18.2 11.5 19.1 9.8 19.1C8.3 19.1 7.4 18.3 6.9 17.5ZM13.7 17.3L15.1 16.3C15.5 16.9 15.9 17.3 16.7 17.3C17.3 17.3 17.7 17 17.7 16.6C17.7 16.2 17.4 16 16.7 15.7L16.2 15.5C15.1 15.1 14.3 14.6 14.3 13.5C14.3 12.5 15.1 11.7 16.4 11.7C17.3 11.7 18 12 18.5 12.8L17 13.7C16.8 13.3 16.6 13.1 16.4 13.1C16.1 13.1 15.9 13.3 15.9 13.5C15.9 13.8 16.1 13.9 16.7 14.1L17.2 14.3C18.5 14.8 19.1 15.3 19.1 16.3C19.1 17.5 18.1 18.2 16.7 18.2C15.5 18.2 14.7 17.7 14.2 17.1L13.7 17.3Z\" fill=\"#000\"/></svg>"
+                    },
+                    {
+                        "name": "Python",
+                        "description": "Proficient in data analysis, scripting, and web development with frameworks like Flask and Django.",
+                        "icon": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\" style=\"vertical-align:middle;\"><rect width=\"24\" height=\"24\" rx=\"4\" fill=\"#306998\"/><path d=\"M12 2C9.243 2 7 4.243 7 7V9H17V7C17 4.243 14.757 2 12 2ZM7 9V11H17V9H7ZM7 11V13C7 15.757 9.243 18 12 18C14.757 18 17 15.757 17 13V11H7ZM12 22C14.757 22 17 19.757 17 17V15H7V17C7 19.757 9.243 22 12 22Z\" fill=\"#FFD43B\"/></svg>"
+                    },
+                    {
+                        "name": "Molecular Biology Techniques",
+                        "description": "Hands-on experience with DNA barcoding, PCR, gel electrophoresis, and molecular diagnostics.",
+                        "icon": "🧬"
+                    },
+                    {
+                        "name": "Bioinformatics Tools",
+                        "description": "Familiar with various bioinformatics software and databases for sequence analysis and genomics.",
+                        "icon": "🧫"
+                    }
+                ],
+                "soft": [
+                    {
+                        "name": "Adaptability",
+                        "description": "Quick to learn new technologies and adapt to evolving project requirements and challenges.",
+                        "icon": "🌱"
+                    },
+                    {
+                        "name": "Communication",
+                        "description": "Clear and concise in both written and verbal communication, capable of explaining technical concepts to diverse audiences.",
+                        "icon": "💬"
+                    },
+                    {
+                        "name": "Teamwork & Collaboration",
+                        "description": "Excellent interpersonal skills with a proven ability to work effectively in team environments.",
+                        "icon": "🤝"
+                    },
+                    {
+                        "name": "Problem Solving",
+                        "description": "Adept at identifying complex issues and developing effective, innovative solutions.",
+                        "icon": "🧠"
+                    }
+                ]
+            },
+            "projects": [
+                {
+                    "title": "Portfolio & Biodata Management System",
+                    "description": "Developed a full-stack web app to manage and present personal/professional data. Implemented responsive UI with React and backend with Flask & MongoDB.",
+                    "technologies": [
+                        "React",
+                        "Flask",
+                        "MongoDB",
+                        "JavaScript",
+                        "HTML/CSS"
+                    ],
+                    "link": "https://github.com/yourusername/portfolio-management-system",
+                    "date": "Jan 2025"
+                },
+                {
+                    "title": "Sickle Cell Detection via Electrophoresis",
+                    "description": "Performed gel electrophoresis on clinical samples for hemoglobin patterning. Developed a classifier web app to interpret banding results visually.",
+                    "technologies": [
+                        "Gel Electrophoresis",
+                        "Clinical Diagnostics",
+                        "Web Development",
+                        "Image Analysis",
+                        "Medical Technology"
+                    ],
+                    "link": "https://github.com/yourusername/sickle-cell-detection",
+                    "date": "Jan 2024"
+                },
+                {
+                    "title": "Medicinal Plant Database",
+                    "description": "Built a searchable platform for medicinal plant species with trait & use data. Used Node.js and PostgreSQL to enable fast filtering and categorization.",
+                    "technologies": [
+                        "Node.js",
+                        "PostgreSQL",
+                        "JavaScript",
+                        "Express.js",
+                        "Database Design"
+                    ],
+                    "link": "https://github.com/yourusername/medicinal-plant-database",
+                    "date": "Mar 2025"
+                },
+                {
+                    "title": "Mentha Identification via ITS2 DNA Barcoding",
+                    "description": "Used ITS2 region DNA barcoding to identify Mentha species. Developed a workflow for sequence analysis and species assignment using BLAST and phylogenetic tools.",
+                    "technologies": [
+                        "DNA Barcoding",
+                        "ITS2 Region",
+                        "BLAST",
+                        "Phylogenetics",
+                        "Bioinformatics"
+                    ],
+                    "link": "https://github.com/yourusername/mentha-identification",
+                    "date": "May 2023"
+                },
+                {
+                    "title": "Gene Analyzer",
+                    "description": "Created a Python tool for gene sequence analysis, including GC content calculation, ORF finding, and motif search. Used Biopython and custom algorithms for flexible analysis.",
+                    "technologies": [
+                        "Python",
+                        "Biopython",
+                        "Sequence Analysis",
+                        "Bioinformatics",
+                        "Algorithm Design"
+                    ],
+                    "link": "https://github.com/yourusername/gene-analyzer",
+                    "date": "Feb 2023"
+                },
+                {
+                    "title": "In Vitro Regeneration of Brahmi (Bacopa monnieri)",
+                    "description": "Carried out sterile plant tissue culture using micropropagation techniques. Recorded growth phases and optimized regeneration protocols in lab setup.",
+                    "technologies": [
+                        "Plant Tissue Culture",
+                        "Micropropagation",
+                        "Sterile Techniques",
+                        "Plant Biology",
+                        "Laboratory Protocols"
+                    ],
+                    "link": "https://github.com/yourusername/brahmi-regeneration",
+                    "date": "Jul 2023"
+                }
+            ],
+            "experience": {
+                "internships": [
+                    {
+                        "title": "Bioinformatics & Web Development Intern",
+                        "description": "Worked on molecular biology experiments and developed using AI full-stack web tools for DNA Analysis & genetic disease detection. I worked on two projects: Molecular Identification of Mentha Using ITS2 DNA Barcoding and Entrepreneurial Development Through Electrophoresis in Sickle Cell Anemia detection.",
+                        "company": "MPKV RAHURI / ADEETECH BIOTECH, Pune",
+                        "duration": "Jan 2024 - May 2024"
+                    },
+                    {
+                        "title": "Bioinformatics Intern",
+                        "description": "Assisted in the development of computational tools for genetic sequence analysis and contributed to a project on microbial genomics.",
+                        "company": "GeneTech Solutions",
+                        "duration": "May 2023 - August 2023"
+                    }
+                ],
+                "thesis": [
+                    {
+                        "title": "Development of a Web-Based Tool for DNA Barcode Analysis",
+                        "university": "Your University Name",
+                        "year": "2024",
+                        "description": "Designed and implemented a web application that facilitates the analysis and identification of species using DNA barcoding sequences, enhancing efficiency and accessibility for researchers."
+                    }
+                ],
+                "certifications": [
+                    {
+                        "title": "Advanced Python for Data Science",
+                        "issuer": "Data Science Academy",
+                        "year": "2022",
+                        "link": "https://www.example.com/certificate/python-datascience"
+                    },
+                    {
+                        "title": "Full Stack Web Development Certification",
+                        "issuer": "Online Course Provider",
+                        "year": "2023",
+                        "link": "https://www.example.com/certificate/fullstack"
+                    }
+                ],
+                "education": [
+                    {
+                        "degree": "B.Tech Biotechnology",
+                        "university": "Savitribai Phule Pune University",
+                        "year": "2022",
+                        "description": "Graduated with distinction, focusing on bioinformatics, molecular diagnostics, and web-based biomedical tools.",
+                        "gpa": "8.5/10",
+                        "honors": "Dean's List, Academic Excellence Award",
+                        "certificate_link": "https://example.com/certificate"
+                    }
+                ],
+                "achievements": [
+                    {
+                        "title": "Media & Content Contributor – College Events & NSS",
+                        "description": "Captured and edited photos/videos for college festivals, days, and cultural programs. Created PowerPoint presentations featured in magazines, newspapers, and social media. Maintained organized storage for event media and managed uploads to YouTube. Documented and led media coverage during a 1-week NSS camp. Shot, edited, and published Sanskritik Karyakram performances.",
+                        "category": "Media & Content Creation",
+                        "year": "2022-2024"
+                    }
+                ],
+                "interests": [
+                    "Photography & Editing",
+                    "Video Editing",
+                    "Reading Research Papers",
+                    "Writing Research Papers",
+                    "Watching Sci-Fi Movies"
+                ]
+            },
+            "contact": {
+                "email": "drshankarmote@gmail.com",
+                "phone": "9699003635",
+                "linkedin": "https://linkedin.com/in/drshankarmote",
+                "github": "https://github.com/yourusername"
+            }
+        },
+        {
+            "id": "uiux",
+            "name": "UI/UX Designer",
+            "description": "UI/UX Designer & Creative Director",
+            "is_active": false,
+            "created_at": "2024-01-01",
+            "updated_at": "2024-01-01",
+            "about": {
+                "hero_title": "Shankar Managini Mote",
+                "hero_subtitle": "UI/UX Designer & Creative Director",
+                "hero_description": "Designing delightful digital experiences for web and mobile.",
+                "about_text": "Award-winning designer with a passion for user-centered design and creative direction.",
+                "highlight1_emoji": "🎨",
+                "highlight1_title": "Design Systems",
+                "highlight1_description": "Built scalable design systems for startups and enterprises.",
+                "highlight2_emoji": "📱",
+                "highlight2_title": "Mobile UX",
+                "highlight2_description": "Expert in mobile-first and responsive design.",
+                "highlight3_emoji": "🧑‍💻",
+                "highlight3_title": "Prototyping",
+                "highlight3_description": "Rapid prototyping with Figma and Adobe XD.",
+                "hero_buttons": [
+                    {
+                        "text": "View Portfolio",
+                        "link": "#projects",
+                        "icon": "🖼️",
+                        "is_visible": true
+                    },
+                    {
+                        "text": "Contact",
+                        "link": "#contact",
+                        "icon": "✉️",
+                        "is_visible": true
+                    }
+                ]
+            },
+            "profile_picture": {
+                "filename": "designer.png",
+                "filepath": "/static/images/Shankar.png"
+            },
+            "skills": {
+                "technical": [
+                    {
+                        "name": "Figma",
+                        "description": "UI design and prototyping."
+                    },
+                    {
+                        "name": "Adobe XD",
+                        "description": "Wireframing and prototyping."
+                    },
+                    {
+                        "name": "User Research",
+                        "description": "Conducting interviews and usability tests."
+                    }
+                ],
+                "soft": [
+                    {
+                        "name": "Creativity",
+                        "description": "Innovative design thinking."
+                    },
+                    {
+                        "name": "Collaboration",
+                        "description": "Working with cross-functional teams."
+                    }
+                ]
+            },
+            "projects": [
+                {
+                    "title": "Mobile App Redesign",
+                    "description": "Redesigned a fintech app for improved usability and engagement.",
+                    "technologies": [
+                        "Figma",
+                        "Adobe XD"
+                    ],
+                    "link": "#"
+                },
+                {
+                    "title": "Brand Identity System",
+                    "description": "Developed a cohesive brand identity for a SaaS startup.",
+                    "technologies": [
+                        "Illustrator",
+                        "Branding"
+                    ],
+                    "link": "#"
+                }
+            ],
+            "experience": {
+                "internships": [],
+                "thesis": [],
+                "certifications": []
+            },
+            "contact": {
+                "email": "alexdesigner@example.com",
+                "phone": "1234567890",
+                "linkedin": "https://linkedin.com/in/alexdesigner",
+                "github": "https://github.com/alexdesigner"
+            }
+        },
+        {
+            "id": "datasci",
+            "name": "Data Scientist",
+            "description": "Data Scientist & ML Engineer",
+            "is_active": false,
+            "created_at": "2024-01-01",
+            "updated_at": "2024-01-01",
+            "about": {
+                "hero_title": "Shankar Managini Mote",
+                "hero_subtitle": "Data Scientist & ML Engineer",
+                "hero_description": "Turning data into actionable insights and predictive models.",
+                "about_text": "Experienced in building machine learning models for business impact.",
+                "highlight1_emoji": "📊",
+                "highlight1_title": "Data Analysis",
+                "highlight1_description": "Advanced analytics with Python and Pandas.",
+                "highlight2_emoji": "🤖",
+                "highlight2_title": "Machine Learning",
+                "highlight2_description": "Building and deploying ML models.",
+                "highlight3_emoji": "🗃️",
+                "highlight3_title": "Big Data",
+                "highlight3_description": "Working with large datasets and cloud platforms.",
+                "hero_buttons": [
+                    {
+                        "text": "View Projects",
+                        "link": "#projects",
+                        "icon": "📈",
+                        "is_visible": true
+                    },
+                    {
+                        "text": "Contact",
+                        "link": "#contact",
+                        "icon": "✉️",
+                        "is_visible": true
+                    }
+                ]
+            },
+            "profile_picture": {
+                "filename": "datasci.png",
+                "filepath": "/static/images/shankar.jpg"
+            },
+            "skills": {
+                "technical": [
+                    {
+                        "name": "Python",
+                        "description": "Data analysis and machine learning."
+                    },
+                    {
+                        "name": "Pandas",
+                        "description": "Data wrangling and manipulation."
+                    },
+                    {
+                        "name": "Machine Learning",
+                        "description": "Supervised and unsupervised learning."
+                    }
+                ],
+                "soft": [
+                    {
+                        "name": "Problem Solving",
+                        "description": "Solving complex data challenges."
+                    },
+                    {
+                        "name": "Communication",
+                        "description": "Explaining technical results to stakeholders."
+                    }
+                ]
+            },
+            "projects": [
+                {
+                    "title": "Customer Churn Prediction",
+                    "description": "Built a predictive model to identify at-risk customers for a telecom company.",
+                    "technologies": [
+                        "Python",
+                        "scikit-learn",
+                        "Pandas"
+                    ],
+                    "link": "#"
+                },
+                {
+                    "title": "Sales Forecasting Model",
+                    "description": "Developed a time series forecasting model for retail sales.",
+                    "technologies": [
+                        "Python",
+                        "Statsmodels"
+                    ],
+                    "link": "#"
+                }
+            ],
+            "experience": {
+                "internships": [],
+                "thesis": [],
+                "certifications": []
+            },
+            "contact": {
+                "email": "jordanlee@example.com",
+                "phone": "9876543210",
+                "linkedin": "https://linkedin.com/in/jordanlee",
+                "github": "https://github.com/jordanlee"
+            }
+        },
+        {
+            "id": "socanalyst",
+            "name": "SOC Analyst / Cybersecurity",
+            "description": "Security Operations Center Analyst & Cybersecurity Specialist",
+            "is_active": false,
+            "created_at": "2024-01-01",
+            "updated_at": "2024-01-01",
+            "about": {
+                "hero_title": "Shankar Managini Mote",
+                "hero_subtitle": "SOC Analyst & Cybersecurity Specialist",
+                "hero_description": "Defending organizations from cyber threats and ensuring digital safety.",
+                "about_text": "Experienced SOC Analyst with a strong background in threat detection, incident response, and security monitoring. Passionate about building resilient security operations and educating teams on best practices.",
+                "highlight1_emoji": "🛡️",
+                "highlight1_title": "Threat Detection",
+                "highlight1_description": "Expert in SIEM tools and real-time monitoring.",
+                "highlight2_emoji": "🚨",
+                "highlight2_title": "Incident Response",
+                "highlight2_description": "Skilled in rapid response and mitigation of security incidents.",
+                "highlight3_emoji": "🔒",
+                "highlight3_title": "Security Awareness",
+                "highlight3_description": "Conducts training and awareness programs for staff.",
+                "hero_buttons": [
+                    {
+                        "text": "View Projects",
+                        "link": "#projects",
+                        "icon": "🛡️",
+                        "is_visible": true
+                    },
+                    {
+                        "text": "Contact",
+                        "link": "#contact",
+                        "icon": "✉️",
+                        "is_visible": true
+                    }
+                ]
+            },
+            "profile_picture": {
+                "filename": "shankar.jpeg",
+                "filepath": "/static/images/shankar.jpeg"
+            },
+            "skills": {
+                "technical": [
+                    {
+                        "name": "SIEM (Splunk, QRadar)",
+                        "description": "Security event monitoring and analysis."
+                    },
+                    {
+                        "name": "Incident Response",
+                        "description": "Handling and mitigating security incidents."
+                    },
+                    {
+                        "name": "Network Security",
+                        "description": "Firewall, IDS/IPS, and network defense."
+                    },
+                    {
+                        "name": "Python Scripting",
+                        "description": "Automating security tasks and log analysis."
+                    }
+                ],
+                "soft": [
+                    {
+                        "name": "Analytical Thinking",
+                        "description": "Quickly identifying and assessing threats."
+                    },
+                    {
+                        "name": "Communication",
+                        "description": "Clear reporting and escalation of incidents."
+                    }
+                ]
+            },
+            "projects": [
+                {
+                    "title": "Phishing Detection Automation",
+                    "description": "Developed a Python script to automate detection and alerting of phishing emails using email header analysis.",
+                    "technologies": [
+                        "Python",
+                        "Email Security",
+                        "Regex"
+                    ],
+                    "link": "#"
+                },
+                {
+                    "title": "SOC Playbook Development",
+                    "description": "Created incident response playbooks for common attack scenarios, improving response time and consistency.",
+                    "technologies": [
+                        "Incident Response",
+                        "Documentation"
+                    ],
+                    "link": "#"
+                }
+            ],
+            "experience": {
+                "internships": [],
+                "thesis": [],
+                "certifications": [
+                    {
+                        "title": "Certified SOC Analyst (CSA)",
+                        "issuer": "EC-Council",
+                        "year": "2023",
+                        "link": "https://www.eccouncil.org/programs/certified-soc-analyst-csa/"
+                    },
+                    {
+                        "title": "CompTIA Security+",
+                        "issuer": "CompTIA",
+                        "year": "2022",
+                        "link": "https://www.comptia.org/certifications/security"
+                    }
+                ]
+            },
+            "contact": {
+                "email": "morgan.patel@example.com",
+                "phone": "5551234567",
+                "linkedin": "https://linkedin.com/in/morganpatel",
+                "github": "https://github.com/morganpatel"
+            }
+        }
+    ],
+    "about": {
+        "hero_title": "Hi, I'm Shankar Managini Mote",
+        "hero_subtitle": "Biotechnology & Web Development Professional",
+        "hero_description": "Passionate about combining biotechnology with modern web technologies to create innovative solutions.",
+        "about_text": "B.Tech Biotechnology graduate with a unique blend of expertise in bioinformatics, DNA barcoding, molecular diagnostics, and web-based biomedical tools. I bridge the gap between biotechnology and modern web development to create innovative solutions.",
+        "highlight1_emoji": "🔬",
+        "highlight1_title": "Biotechnology Expert",
+        "highlight1_description": "Specialized in DNA barcoding and molecular diagnostics",
+        "highlight2_emoji": "💻",
+        "highlight2_title": "Web Developer",
+        "highlight2_description": "Creating modern web applications for biomedical research",
+        "highlight3_emoji": "🔍",
+        "highlight3_title": "Research Enthusiast",
+        "highlight3_description": "Passionate about innovative solutions in biotechnology",
+        "hero_buttons": [
+            {
+                "text": "Download Resume",
+                "link": "/static/documents/Your_Resume.pdf",
+                "icon": "📄",
+                "is_visible": true
+            },
+            {
+                "text": "Contact Me",
+                "link": "#contact",
+                "icon": "📬",
+                "is_visible": true
+            },
+            {
+                "text": "View My Work",
+                "link": "#projects",
+                "icon": "🚀",
+                "is_visible": true
+            }
+        ]
+    },
+    "profile_picture": {
+        "filename": "shankar.jpeg",
+        "filepath": "/static/images/shankar.jpeg"
+    },
+    "skills": {
+        "technical": [
+            {
+                "name": "HTML5 & CSS3",
+                "description": "Strong command of semantic HTML and modern CSS techniques, including responsive design.",
+                "icon": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\" style=\"vertical-align:middle;\"><path d=\"M1.5 0L3.27 21.6L12 24L20.73 21.6L22.5 0H1.5ZM17.19 7.5H7.02L7.2 9.6H17.01L16.65 13.2L12 14.4L7.35 13.2L7.08 10.8H9.12L9.27 12.3L12 12.96L14.73 12.3L15.03 9.6H6.99L6.81 7.5H17.19ZM12 22.08L4.5 20.16L3.03 2.4H20.97L19.5 20.16L12 22.08Z\" fill=\"#E44D26\"/><path d=\"M12 21.12L19.5 19.2L20.97 2.4H12V21.12Z\" fill=\"#F16529\"/><path d=\"M12 12.96L9.27 12.3L9.12 10.8H12V12.96ZM12 12.96L14.73 12.3L15.03 9.6H12V12.96Z\" fill=\"#EBEBEB\"/><path d=\"M12 14.4L16.65 13.2L17.01 9.6H12V14.4Z\" fill=\"#EBEBEB\"/><path d=\"M12 14.4L7.35 13.2L7.08 10.8H12V14.4Z\" fill=\"#fff\"/></svg>"
+            },
+            {
+                "name": "JavaScript",
+                "description": "Experienced in front-end development, DOM manipulation, and interactive web applications.",
+                "icon": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\" style=\"vertical-align:middle;\"><rect width=\"24\" height=\"24\" rx=\"4\" fill=\"#F7DF1E\"/><path d=\"M6.5 17.5L8.1 16.4C8.5 17.1 8.9 17.6 9.7 17.6C10.4 17.6 10.8 17.2 10.8 16.7V11.3H12.6V16.7C12.6 18.2 11.5 19.1 9.8 19.1C8.3 19.1 7.4 18.3 6.9 17.5ZM13.7 17.3L15.1 16.3C15.5 16.9 15.9 17.3 16.7 17.3C17.3 17.3 17.7 17 17.7 16.6C17.7 16.2 17.4 16 16.7 15.7L16.2 15.5C15.1 15.1 14.3 14.6 14.3 13.5C14.3 12.5 15.1 11.7 16.4 11.7C17.3 11.7 18 12 18.5 12.8L17 13.7C16.8 13.3 16.6 13.1 16.4 13.1C16.1 13.1 15.9 13.3 15.9 13.5C15.9 13.8 16.1 13.9 16.7 14.1L17.2 14.3C18.5 14.8 19.1 15.3 19.1 16.3C19.1 17.5 18.1 18.2 16.7 18.2C15.5 18.2 14.7 17.7 14.2 17.1L13.7 17.3Z\" fill=\"#000\"/></svg>"
+            },
+            {
+                "name": "Python",
+                "description": "Proficient in data analysis, scripting, and web development with frameworks like Flask and Django.",
+                "icon": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\" style=\"vertical-align:middle;\"><rect width=\"24\" height=\"24\" rx=\"4\" fill=\"#306998\"/><path d=\"M12 2C9.243 2 7 4.243 7 7V9H17V7C17 4.243 14.757 2 12 2ZM7 9V11H17V9H7ZM7 11V13C7 15.757 9.243 18 12 18C14.757 18 17 15.757 17 13V11H7ZM12 22C14.757 22 17 19.757 17 17V15H7V17C7 19.757 9.243 22 12 22Z\" fill=\"#FFD43B\"/></svg>"
+            },
+            {
+                "name": "Molecular Biology Techniques",
+                "description": "Hands-on experience with DNA barcoding, PCR, gel electrophoresis, and molecular diagnostics.",
+                "icon": "🧬"
+            },
+            {
+                "name": "Bioinformatics Tools",
+                "description": "Familiar with various bioinformatics software and databases for sequence analysis and genomics.",
+                "icon": "🧫"
+            }
+        ],
+        "soft": [
+            {
+                "name": "Adaptability",
+                "description": "Quick to learn new technologies and adapt to evolving project requirements and challenges.",
+                "icon": "🌱"
+            },
+            {
+                "name": "Communication",
+                "description": "Clear and concise in both written and verbal communication, capable of explaining technical concepts to diverse audiences.",
+                "icon": "💬"
+            },
+            {
+                "name": "Teamwork & Collaboration",
+                "description": "Excellent interpersonal skills with a proven ability to work effectively in team environments.",
+                "icon": "🤝"
+            },
+            {
+                "name": "Problem Solving",
+                "description": "Adept at identifying complex issues and developing effective, innovative solutions.",
+                "icon": "🧠"
+            }
+        ]
+    },
+    "projects": [
+        {
+            "title": "Interactive COVID-19 Data Dashboard",
+            "description": "Created a dynamic web dashboard using JavaScript and D3.js to visualize global COVID-19 trends, including infection rates, mortality, and vaccination progress.",
+            "technologies": [
+                "JavaScript",
+                "D3.js",
+                "HTML",
+                "CSS",
+                "Data Visualization"
+            ],
+            "link": "https://github.com/yourusername/covid-dashboard"
+        },
+        {
+            "title": "Bioinformatics Pipeline for Novel Gene Discovery",
+            "description": "Developed a Python-based bioinformatics pipeline for identifying novel genes from metagenomic data, integrating various public databases and tools.",
+            "technologies": [
+                "Python",
+                "Biopython",
+                "Bash",
+                "Metagenomics",
+                "NCBI Databases"
+            ],
+            "link": "https://github.com/yourusername/bioinformatics-pipeline"
+        }
+    ],
+    "experience": {
+        "internships": [
+            {
+                "title": "Bioinformatics Intern",
+                "description": "Assisted in the development of computational tools for genetic sequence analysis and contributed to a project on microbial genomics.",
+                "company": "GeneTech Solutions",
+                "duration": "May 2023 - August 2023"
+            }
+        ],
+        "thesis": [
+            {
+                "title": "Development of a Web-Based Tool for DNA Barcode Analysis",
+                "university": "Your University Name",
+                "year": "2024",
+                "description": "Designed and implemented a web application that facilitates the analysis and identification of species using DNA barcoding sequences, enhancing efficiency and accessibility for researchers."
+            }
+        ],
+        "certifications": [
+            {
+                "title": "Advanced Python for Data Science",
+                "issuer": "Data Science Academy",
+                "year": "2022",
+                "link": "https://www.example.com/certificate/python-datascience"
+            },
+            {
+                "title": "Full Stack Web Development Certification",
+                "issuer": "Online Course Provider",
+                "year": "2023",
+                "link": "https://www.example.com/certificate/fullstack"
+            }
+        ],
+        "education": [
+```json
+            "projects": [
+                {
+                    "title": "Phishing Detection Automation",
+                    "description": "Developed a Python script to automate detection and alerting of phishing emails using email header analysis.",
+                    "technologies": [
+                        "Python",
+                        "Email Security",
+                        "Regex"
+                    ],
+                    "link": "#"
+                },
+                {
+                    "title": "SOC Playbook Development",
+                    "description": "Created incident response playbooks for common attack scenarios, improving response time and consistency.",
+                    "technologies": [
+                        "Incident Response",
+                        "Documentation"
+                    ],
+                    "link": "#"
+                }
+            ],
+            "experience": {
+                "internships": [],
+                "thesis": [],
+                "certifications": [
+                    {
+                        "title": "Certified SOC Analyst (CSA)",
+                        "issuer": "EC-Council",
+                        "year": "2023",
+                        "link": "https://www.eccouncil.org/programs/certified-soc-analyst-csa/"
+                    },
+                    {
+                        "title": "CompTIA Security+",
+                        "issuer": "CompTIA",
+                        "year": "2022",
+                        "link": "https://www.comptia.org/certifications/security"
+                    }
+                ]
+            },
+            "contact": {
+                "email": "morgan.patel@example.com",
+                "phone": "5551234567",
+                "linkedin": "https://linkedin.com/in/morganpatel",
+                "github": "https://github.com/morganpatel"
+            }
+        }
+    ],
+    "about": {
+        "hero_title": "Hi, I'm Shankar Managini Mote",
+        "hero_subtitle": "Biotechnology & Web Development Professional",
+        "hero_description": "Passionate about combining biotechnology with modern web technologies to create innovative solutions.",
+        "about_text": "B.Tech Biotechnology graduate with a unique blend of expertise in bioinformatics, DNA barcoding, molecular diagnostics, and web-based biomedical tools. I bridge the gap between biotechnology and modern web development to create innovative solutions.",
+        "highlight1_emoji": "🔬",
+        "highlight1_title": "Biotechnology Expert",
+        "highlight1_description": "Specialized in DNA barcoding and molecular diagnostics",
+        "highlight2_emoji": "💻",
+        "highlight2_title": "Web Developer",
+        "highlight2_description": "Creating modern web applications for biomedical research",
+        "highlight3_emoji": "🔍",
+        "highlight3_title": "Research Enthusiast",
+        "highlight3_description": "Passionate about innovative solutions in biotechnology",
+        "hero_buttons": [
+            {
+                "text": "Download Resume",
+                "link": "/static/documents/Your_Resume.pdf",
+                "icon": "📄",
+                "is_visible": true
+            },
+            {
+                "text": "Contact Me",
+                "link": "#contact",
+                "icon": "📬",
+                "is_visible": true
+            },
+            {
+                "text": "View My Work",
+                "link": "#projects",
+                "icon": "🚀",
+                "is_visible": true
+            }
+        ]
+    },
+    "profile_picture": {
+        "filename": "shankar.jpeg",
+        "filepath": "/static/images/shankar.jpeg"
+    },
+    "skills": {
+        "technical": [
+            {
+                "name": "HTML5 & CSS3",
+                "description": "Strong command of semantic HTML and modern CSS techniques, including responsive design.",
+                "icon": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\" style=\"vertical-align:middle;\"><path d=\"M1.5 0L3.27 21.6L12 24L20.73 21.6L22.5 0H1.5ZM17.19 7.5H7.02L7.2 9.6H17.01L16.65 13.2L12 14.4L7.35 13.2L7.08 10.8H9.12L9.27 12.3L12 12.96L14.73 12.3L15.03 9.6H6.99L6.81 7.5H17.19ZM12 22.08L4.5 20.16L3.03 2.4H20.97L19.5 20.16L12 22.08Z\" fill=\"#E44D26\"/><path d=\"M12 21.12L19.5 19.2L20.97 2.4H12V21.12Z\" fill=\"#F16529\"/><path d=\"M12 12.96L9.27 12.3L9.12 10.8H12V12.96ZM12 12.96L14.73 12.3L15.03 9.6H12V12.96Z\" fill=\"#EBEBEB\"/><path d=\"M12 14.4L16.65 13.2L17.01 9.6H12V14.4Z\" fill=\"#EBEBEB\"/><path d=\"M12 14.4L7.35 13.2L7.08 10.8H12V14.4Z\" fill=\"#fff\"/></svg>"
+            },
+            {
+                "name": "JavaScript",
+                "description": "Experienced in front-end development, DOM manipulation, and interactive web applications.",
+                "icon": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\" style=\"vertical-align:middle;\"><rect width=\"24\" height=\"24\" rx=\"4\" fill=\"#F7DF1E\"/><path d=\"M6.5 17.5L8.1 16.4C8.5 17.1 8.9 17.6 9.7 17.6C10.4 17.6 10.8 17.2 10.8 16.7V11.3H12.6V16.7C12.6 18.2 11.5 19.1 9.8 19.1C8.3 19.1 7.4 18.3 6.9 17.5ZM13.7 17.3L15.1 16.3C15.5 16.9 15.9 17.3 16.7 17.3C17.3 17.3 17.7 17 17.7 16.6C17.7 16.2 17.4 16 16.7 15.7L16.2 15.5C15.1 15.1 14.3 14.6 14.3 13.5C14.3 12.5 15.1 11.7 16.4 11.7C17.3 11.7 18 12 18.5 12.8L17 13.7C16.8 13.3 16.6 13.1 16.4 13.1C16.1 13.1 15.9 13.3 15.9 13.5C15.9 13.8 16.1 13.9 16.7 14.1L17.2 14.3C18.5 14.8 19.1 15.3 19.1 16.3C19.1 17.5 18.1 18.2 16.7 18.2C15.5 18.2 14.7 17.7 14.2 17.1L13.7 17.3Z\" fill=\"#000\"/></svg>"
+            },
+            {
+                "name": "Python",
+                "description": "Proficient in data analysis, scripting, and web development with frameworks like Flask and Django.",
+                "icon": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\" style=\"vertical-align:middle;\"><rect width=\"24\" height=\"24\" rx=\"4\" fill=\"#306998\"/><path d=\"M12 2C9.243 2 7 4.243 7 7V9H17V7C17 4.243 14.757 2 12 2ZM7 9V11H17V9H7ZM7 11V13C7 15.757 9.243 18 12 18C14.757 18 17 15.757 17 13V11H7ZM12 22C14.757 22 17 19.757 17 17V15H7V17C7 19.757 9.243 22 12 22Z\" fill=\"#FFD43B\"/></svg>"
+            },
+            {
+                "name": "Molecular Biology Techniques",
+                "description": "Hands-on experience with DNA barcoding, PCR, gel electrophoresis, and molecular diagnostics.",
+                "icon": "🧬"
+            },
+            {
+                "name": "Bioinformatics Tools",
+                "description": "Familiar with various bioinformatics software and databases for sequence analysis and genomics.",
+                "icon": "🧫"
+            }
+        ],
+        "soft": [
+            {
+                "name": "Adaptability",
+                "description": "Quick to learn new technologies and adapt to evolving project requirements and challenges.",
+                "icon": "🌱"
+            },
+            {
+                "name": "Communication",
+                "description": "Clear and concise in both written and verbal communication, capable of explaining technical concepts to diverse audiences.",
+                "icon": "💬"
+            },
+            {
+                "name": "Teamwork & Collaboration",
+                "description": "Excellent interpersonal skills with a proven ability to work effectively in team environments.",
+                "icon": "🤝"
+            },
+            {
+                "name": "Problem Solving",
+                "description": "Adept at identifying complex issues and developing effective, innovative solutions.",
+                "icon": "🧠"
+            }
+        ]
+    },
+    "projects": [
+        {
+            "title": "Interactive COVID-19 Data Dashboard",
+            "description": "Created a dynamic web dashboard using JavaScript and D3.js to visualize global COVID-19 trends, including infection rates, mortality, and vaccination progress.",
+            "technologies": [
+                "JavaScript",
+                "D3.js",
+                "HTML",
+                "CSS",
+                "Data Visualization"
+            ],
+            "link": "https://github.com/yourusername/covid-dashboard"
+        },
+        {
+            "title": "Bioinformatics Pipeline for Novel Gene Discovery",
+            "description": "Developed a Python-based bioinformatics pipeline for identifying novel genes from metagenomic data, integrating various public databases and tools.",
+            "technologies": [
+                "Python",
+                "Biopython",
+                "Bash",
+                "Metagenomics",
+                "NCBI Databases"
+            ],
+            "link": "https://github.com/yourusername/bioinformatics-pipeline"
+        }
+    ],
+    "experience": {
+        "internships": [
+            {
+                "title": "Bioinformatics Intern",
+                "description": "Assisted in the development of computational tools for genetic sequence analysis and contributed to a project on microbial genomics.",
+                "company": "GeneTech Solutions",
+                "duration": "May 2023 - August 2023"
+            }
+        ],
+        "thesis": [
+            {
+                "title": "Development of a Web-Based Tool for DNA Barcode Analysis",
+                "university": "Your University Name",
+                "year": "2024",
+                "description": "Designed and implemented a web application that facilitates the analysis and identification of species using DNA barcoding sequences, enhancing efficiency and accessibility for researchers."
+            }
+        ],
+        "certifications": [
+            {
+                "title": "Advanced Python for Data Science",
+                "issuer": "Data Science Academy",
+                "year": "2022",
+                "link": "https://www.example.com/certificate/python-datascience"
+            },
+            {
+                "title": "Full Stack Web Development Certification",
+                "issuer": "Online Course Provider",
+                "year": "2023",
+                "link": "https://www.example.com/certificate/fullstack"
+            }
+        ],
+        "education": [
+            {
+                "degree": "B.Tech Biotechnology",
+                "university": "Savitribai Phule Pune University",
+                "year": "2022",
+                "description": "Graduated with distinction, focusing on bioinformatics, molecular diagnostics, and web-based biomedical tools.",
+                "gpa": "8.5/10",
+                "honors": "Dean's List, Academic Excellence Award",
+                "certificate_link": "https://example.com/certificate"
+            }
+        ]
+    },
+    "contact": {
+        "email": "drshankarmote@gmail.com",
+        "phone": "9699003635",
+        "linkedin": "https://linkedin.com/in/drshankarmote",
+        "github": "https://github.com/yourusername"
+    },
+    "settings": {
+        "site_title": "SSU",
+        "default_portfolio": "main",
+        "allow_public_access": true,
+        "maintenance_mode": false,
+        "default_theme": "Default Dark",
+        "section_heading_alignment": "center"
+    }
+}
+```

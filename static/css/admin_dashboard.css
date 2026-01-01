@@ -1,0 +1,457 @@
+/* Extracted from admin_dashboard.html <style> */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-dark) !important;
+    color: var(--text-dark);
+    margin: 0 !important;
+    padding-top: 60px !important;
+    /* Default space for fixed header/navbar */
+    display: flex;
+    min-height: 100vh;
+}
+
+.admin-header {
+    background: linear-gradient(90deg, rgb(255, 106, 0) 0%, rgb(238, 9, 121) 50%, rgb(0, 195, 255) 100%);
+    color: #fff;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+body.light-mode .admin-header {
+    background: linear-gradient(90deg, #ffc79f 0%, #fcb69f 50%, #a1c4fd 100%);
+    color: #222;
+}
+
+.admin-header h1 {
+    margin: 0;
+    font-size: 1.8em;
+    color: var(--text-dark);
+}
+
+body.light-mode .admin-header h1 {
+    color: var(--text-light);
+}
+
+.admin-header .logout-btn {
+    background: rgba(255, 255, 255, 0.2);
+    color: #fff;
+    padding: 6px 12px;
+    /* Reduced padding */
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background 0.3s ease;
+}
+
+.admin-header .logout-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+body.light-mode .admin-header .logout-btn {
+    background: rgba(0, 0, 0, 0.1);
+    color: var(--text-light);
+}
+
+body.light-mode .admin-header .logout-btn:hover {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.admin-sidebar {
+    width: 250px;
+    background-color: var(--card-dark);
+    padding: 20px;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 60px;
+    /* Below the header */
+    left: 0;
+    height: calc(100vh - 60px);
+    /* Fill remaining height */
+    overflow-y: auto;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    z-index: 999;
+    /* Ensure sidebar is above main content */
+    transform: translateX(-100%);
+    /* Hidden by default (Mobile First) */
+}
+
+body.light-mode .admin-sidebar {
+    background-color: var(--card-light);
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
+}
+
+aside.admin-sidebar nav ul,
+#drawer ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex !important;
+    /* Ensure flexbox for column direction */
+    flex-direction: column !important;
+    /* Arrange items vertically */
+}
+
+aside.admin-sidebar nav ul li,
+#drawer ul li {
+    margin-bottom: 0px !important;
+    /* Ensure no gap */
+    padding-bottom: 0px !important;
+    /* Ensure no gap */
+    display: block !important;
+    /* Ensure vertical arrangement */
+    width: 100% !important;
+    /* Ensure full width for vertical stacking */
+}
+
+aside.admin-sidebar nav ul li a,
+#drawer ul li a {
+    display: block !important;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: var(--text-dark);
+    border-radius: 8px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    width: 100% !important;
+    /* Ensure full width for vertical stacking */
+}
+
+.admin-sidebar a.active,
+.admin-sidebar a:hover {
+    background-color: var(--primary);
+    color: #fff;
+}
+
+body.light-mode .admin-sidebar a {
+    color: var(--text-light);
+}
+
+body.light-mode .admin-sidebar a.active,
+body.light-mode .admin-sidebar a:hover {
+    background-color: var(--primary);
+    color: #fff;
+}
+
+.admin-content {
+    margin-left: 0;
+    /* Default (Mobile First) */
+    padding: 30px;
+    flex-grow: 1;
+    position: relative;
+    z-index: 1;
+    transition: margin-left 0.3s ease;
+}
+
+.admin-card {
+    background-color: var(--card-dark);
+    padding: 25px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    transition: background-color 0.3s ease;
+}
+
+body.light-mode .admin-card {
+    background-color: var(--card-light);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.admin-card h2 {
+    color: var(--primary);
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 1.5em;
+}
+
+.admin-card table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.admin-card th,
+.admin-card td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-dark);
+}
+
+body.light-mode .admin-card th,
+body.light-mode .admin-card td {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    color: var(--text-light);
+}
+
+.admin-card th {
+    background-color: rgba(255, 255, 255, 0.05);
+    font-weight: 600;
+}
+
+body.light-mode .admin-card th {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.admin-card .actions {
+    display: flex;
+    gap: 10px;
+}
+
+.admin-card .action-btn {
+    padding: 6px 12px;
+    border-radius: 6px;
+    text-decoration: none;
+    color: #fff;
+    transition: background-color 0.3s ease;
+}
+
+.admin-card .edit-btn {
+    background-color: var(--primary);
+}
+
+.admin-card .edit-btn:hover {
+    background-color: #0056b3;
+}
+
+.admin-card .delete-btn {
+    background-color: #dc3545;
+}
+
+.admin-card .delete-btn:hover {
+    background-color: #c82333;
+}
+
+.add-new-btn {
+    background-color: #28a745;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    display: inline-block;
+    margin-bottom: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.add-new-btn:hover {
+    background-color: #218838;
+}
+
+/* Form specific styles */
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+    color: var(--text-dark);
+    transition: color var(--transition);
+}
+
+body.light-mode .form-group label {
+    color: var(--text-light);
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"] {
+    /* Add any missing properties or close the selector if it was cut off */
+    width: 100%;
+    /* Added to ensure full width */
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    background-color: var(--input-bg);
+    color: var(--text-dark);
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+body.light-mode .form-group input[type="text"],
+body.light-mode .form-group input[type="email"] {
+    color: var(--text-light);
+    background-color: var(--input-bg-light);
+    border: 1px solid var(--border-color-light);
+}
+
+/* Ensure the last rule is properly closed */
+
+/* Modal styles */
+.modal {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 10000;
+    /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgba(0, 0, 0, 0.6);
+    /* Black w/ opacity */
+    display: flex;
+    /* Use flexbox for centering */
+    align-items: center;
+    /* Center vertically */
+    justify-content: center;
+    /* Center horizontally */
+}
+
+.modal-content {
+    background-color: var(--card-dark);
+    margin: auto;
+    /* Auto margin for centering */
+    padding: 30px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    width: 90%;
+    /* Adjust width as needed */
+    max-width: 500px;
+    /* Max width for larger screens */
+    position: relative;
+    /* For absolute positioning of close button */
+    color: var(--text-dark);
+}
+
+body.light-mode .modal-content {
+    background-color: var(--card-light);
+    color: var(--text-light);
+}
+
+.modal-content h3 {
+    color: var(--primary);
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 1.6em;
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+/* Drawer styles */
+#drawer {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    /* Start off-screen to the right */
+    width: 80%;
+    /* Make width relative to viewport */
+    max-width: 280px;
+    /* Set a max-width for larger mobile devices */
+    height: 100%;
+    background-color: var(--card-dark);
+    /* Use a theme variable */
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.2);
+    transition: right 0.3s ease-in-out;
+    z-index: 1001;
+    /* Higher than header */
+    padding-top: 15px;
+    /* Adjust padding for drawer content */
+    overflow-y: auto;
+}
+
+#drawer.active {
+    right: 0;
+    /* Slide in */
+}
+
+body.light-mode #drawer {
+    background-color: var(--card-light);
+}
+
+/* Drawer overlay */
+.drawer-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+}
+
+.drawer-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Drawer toggle button (hamburger) */
+.drawer-toggle {
+    background: none;
+    border: none;
+    color: var(--text-dark);
+    /* Adjust color for visibility */
+    font-size: 2em;
+    cursor: pointer;
+    display: block;
+    /* Visible by default (Mobile First) */
+    z-index: 1002;
+    /* Higher than drawer */
+}
+
+body.light-mode .drawer-toggle {
+    color: var(--text-light);
+}
+
+/* Drawer close button */
+.drawer-close {
+    background: none;
+    border: none;
+    color: var(--text-dark);
+    /* Adjust color for visibility */
+    font-size: 2em;
+    cursor: pointer;
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    z-index: 1002;
+}
+
+body.light-mode .drawer-close {
+    color: var(--text-light);
+}
+
+/* Adjust main content when drawer is active (optional, depending on desired effect) */
+/* This might not be needed if the drawer is truly overlaying */
+/*
+body.drawer-open .admin-content {
+    margin-right: 300px;
+}
+*/
+
+/* Media query to show/hide drawer toggle button */
+
+
+@media (min-width: 769px) {
+    .drawer-toggle {
+        display: none !important;
+        /* Hide hamburger on larger screens */
+    }
+
+    .admin-sidebar {
+        transform: translateX(0);
+        /* Show the main sidebar on larger screens */
+    }
+
+    .admin-content {
+        margin-left: 250px;
+        /* Push content on larger screens */
+    }
+}

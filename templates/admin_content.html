@@ -1,0 +1,773 @@
+{% if current_section == 'dashboard' %}
+<div class="admin-card">
+    <h2>Welcome to your Admin Dashboard!</h2>
+    {% if stats %}
+    <p class="admin-info-text">Here is an overview of your active portfolio: <strong>{{ stats.active_portfolio_name
+            }}</strong></p>
+
+    <div class="stats-grid">
+        <div class="stat-card">
+            <div class="stat-icon">📂</div>
+            <div class="stat-value">{{ stats.projects }}</div>
+            <div class="stat-label">Projects</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon">⚡</div>
+            <div class="stat-value">{{ stats.skills }}</div>
+            <div class="stat-label">Skills</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon">💼</div>
+            <div class="stat-value">{{ stats.experience }}</div>
+            <div class="stat-label">Experience Items</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon">🎓</div>
+            <div class="stat-value">{{ stats.education }}</div>
+            <div class="stat-label">Education Items</div>
+        </div>
+    </div>
+    {% else %}
+    <div class="alert alert-warning">
+        <strong>Server Restart Required:</strong> The dashboard logic has been updated. Please restart your Flask server
+        to see the statistics.
+    </div>
+    {% endif %}
+
+    <style>
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .stat-icon {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .stat-value {
+            font-size: 2em;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .stat-label {
+            color: var(--text-muted);
+            font-size: 0.9em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+    </style>
+</div>
+{% elif current_section == 'skills' %}
+<div class="admin-card">
+    <h2>Manage Skills</h2>
+    <a href="{{ url_for('admin_dashboard', section='add_skill') }}" class="add-new-btn" title="Add New Skill"
+        aria-label="Add New Skill"><span aria-hidden="true">➕</span><span class="sr-only">Add New Skill</span></a>
+
+    <table id="skills-table">
+        <thead>
+            <tr>
+                <th></th>
+                <th>Type</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for skill in skills %}
+            <tr draggable="true" data-id="{{ skill.id }}">
+                <td class="drag-handle" style="cursor: grab;" tabindex="0" aria-label="Reorder skill">☰<span
+                        class="sr-only">Reorder</span></td>
+                <td>{{ skill.type | capitalize }}</td>
+                <td>{{ skill.name }}</td>
+                <td>{{ skill.get('description', 'N/A') }}</td>
+                <td class="actions">
+                    <a href="{{ url_for('admin_dashboard', section='edit_skill', id=skill.id) }}"
+                        class="action-btn edit-btn" title="Edit Skill" aria-label="Edit Skill"><span
+                            aria-hidden="true">✏️</span><span class="sr-only">Edit</span></a>
+                    <button type="button" class="action-btn delete-btn" title="Delete Skill" aria-label="Delete Skill"
+                        onclick="showConfirmModal({action: 'delete_skill', id: '{{ skill.id }}'})"><span
+                            aria-hidden="true">🗑️</span><span class="sr-only">Delete</span></button>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <button id="saveSkillsOrderBtn" class="add-new-btn" style="display:none; margin-top:10px;">Save Skills
+        Order</button>
+</div>
+{% elif current_section == 'add_skill' or current_section == 'edit_skill' %}
+<div class="admin-card">
+    <h2>{{ form_title }}</h2>
+    <form method="POST">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+        <div class="form-group">
+            <label for="type">Skill Type:</label>
+            <select id="type" name="type" required>
+                <option value="technical" {% if skill and skill.type=='technical' %}selected{% endif %}>Technical
+                </option>
+                <option value="soft" {% if skill and skill.type=='soft' %}selected{% endif %}>Soft</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="name">Skill Name:</label>
+            <input type="text" id="name" name="name" value="{{ skill.name if skill else '' }}" required>
+        </div>
+        <div class="form-group">
+            <label for="description">Description (Optional):</label>
+            <textarea id="description" name="description" rows="4">{{ skill.description if skill else '' }}</textarea>
+        </div>
+        <button type="submit" class="add-new-btn">Save Skill</button>
+        <a href="{{ url_for('admin_dashboard', section='skills') }}" class="action-btn edit-btn"
+            style="margin-left: 10px;">Cancel</a>
+    </form>
+</div>
+{% elif current_section == 'projects' %}
+<div class="admin-card">
+    <h2>Manage Projects</h2>
+    <a href="{{ url_for('admin_dashboard', section='add_project') }}" class="add-new-btn" title="Add New Project"
+        aria-label="Add New Project"><span aria-hidden="true">➕</span><span class="sr-only">Add New Project</span></a>
+
+    <table id="projects-table">
+        <thead>
+            <tr>
+                <th></th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Technologies</th>
+                <th>Link</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for project in projects %}
+            <tr draggable="true" data-id="{{ project.id }}">
+                <td class="drag-handle" style="cursor: grab;" tabindex="0" aria-label="Reorder project">☰<span
+                        class="sr-only">Reorder</span></td>
+                <td>{{ project.title }}</td>
+                <td>{{ project.get('description', '')[:100] }}...</td>
+                <td>
+                    {% if project.technologies %}
+                    {% for tech in project.technologies %}
+                    <span class="tech-tag">{{ tech }}</span>{% if not loop.last %},{% endif %}
+                    {% endfor %}
+                    {% else %}
+                    N/A
+                    {% endif %}
+                </td>
+                <td>{% if project.link %}<a href="{{ project.link }}" target="_blank">Link</a>{% else %}N/A{% endif %}
+                </td>
+                <td class="actions">
+                    <a href="{{ url_for('admin_dashboard', section='edit_project', id=project.id) }}"
+                        class="action-btn edit-btn" title="Edit Project" aria-label="Edit Project"><span
+                            aria-hidden="true">✏️</span><span class="sr-only">Edit</span></a>
+                    <button type="button" class="action-btn delete-btn" title="Delete Project"
+                        aria-label="Delete Project"
+                        onclick="showConfirmModal({action: 'delete_project', id: '{{ project.id }}'})"><span
+                            aria-hidden="true">🗑️</span><span class="sr-only">Delete</span></button>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <button id="saveProjectsOrderBtn" class="add-new-btn" style="display:none; margin-top:10px;">Save Projects
+        Order</button>
+</div>
+{% elif current_section == 'add_project' or current_section == 'edit_project' %}
+<div class="admin-card">
+    <h2>{{ form_title }}</h2>
+    <form method="POST">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+        <div class="form-group">
+            <label for="title">Project Title:</label>
+            <input type="text" id="title" name="title" value="{{ project.title if project else '' }}" required>
+        </div>
+        <div class="form-group">
+            <label for="description">Description:</label>
+            <textarea id="description" name="description" rows="6"
+                required>{{ project.description if project else '' }}</textarea>
+        </div>
+        <div class="form-group">
+            <label for="technologies">Technologies (comma-separated):</label>
+            <input type="text" id="technologies" name="technologies"
+                value="{{ project.technologies | join(', ') if project and project.technologies else '' }}">
+        </div>
+        <div class="form-group">
+            <label for="link">Project Link (Optional):</label>
+            <input type="url" id="link" name="link" value="{{ project.link if project else '' }}">
+        </div>
+        <button type="submit" class="add-new-btn">Save Project</button>
+        <a href="{{ url_for('admin_dashboard', section='projects') }}" class="action-btn edit-btn"
+            style="margin-left: 10px;">Cancel</a>
+    </form>
+</div>
+{% elif current_section == 'experience' %}
+<div class="admin-card">
+    <h2>Manage Experience</h2>
+    <p>Add, edit, or delete your internships, thesis work, and certifications.</p>
+
+    <h3>Internships</h3>
+    <a href="{{ url_for('admin_dashboard', section='add_experience', category='internship') }}" class="add-new-btn"
+        title="Add New Internship" aria-label="Add New Internship"><span aria-hidden="true">➕</span><span
+            class="sr-only">Add New Internship</span></a>
+    <table>
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Company</th>
+                <th>Duration</th>
+                <th>Description</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in experience_data.internships %}
+            <tr>
+                <td>{{ item.title }}</td>
+                <td>{{ item.get('company', 'N/A') }}</td>
+                <td>{{ item.get('duration', 'N/A') }}</td>
+                <td>{{ item.get('description', '')[:100] }}...</td>
+                <td class="actions">
+                    <a href="{{ url_for('admin_dashboard', section='edit_experience', id=loop.index0, category='internship') }}"
+                        class="action-btn edit-btn" title="Edit Internship" aria-label="Edit Internship"><span
+                            aria-hidden="true">✏️</span><span class="sr-only">Edit</span></a>
+                    <button type="button" class="action-btn delete-btn" title="Delete Internship"
+                        aria-label="Delete Internship"
+                        onclick="showConfirmModal({action: 'delete_experience', id: '{{ loop.index0 }}', category: 'internship'})"><span
+                            aria-hidden="true">🗑️</span><span class="sr-only">Delete</span></button>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h3>Thesis</h3>
+    <a href="{{ url_for('admin_dashboard', section='add_experience', category='thesis') }}" class="add-new-btn"
+        title="Add New Thesis" aria-label="Add New Thesis"><span aria-hidden="true">➕</span><span class="sr-only">Add
+            New Thesis</span></a>
+    <table>
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>University</th>
+                <th>Year</th>
+                <th>Description</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in experience_data.thesis %}
+            <tr>
+                <td>{{ item.title }}</td>
+                <td>{{ item.get('university', 'N/A') }}</td>
+                <td>{{ item.get('year', 'N/A') }}</td>
+                <td>{{ item.get('description', '')[:100] }}...</td>
+                <td class="actions">
+                    <a href="{{ url_for('admin_dashboard', section='edit_experience', id=loop.index0, category='thesis') }}"
+                        class="action-btn edit-btn" title="Edit Thesis" aria-label="Edit Thesis"><span
+                            aria-hidden="true">✏️</span><span class="sr-only">Edit</span></a>
+                    <button type="button" class="action-btn delete-btn" title="Delete Thesis" aria-label="Delete Thesis"
+                        onclick="showConfirmModal({action: 'delete_experience', id: '{{ loop.index0 }}', category: 'thesis'})"><span
+                            aria-hidden="true">🗑️</span><span class="sr-only">Delete</span></button>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h3>Certifications</h3>
+    <a href="{{ url_for('admin_dashboard', section='add_experience', category='certification') }}" class="add-new-btn"
+        title="Add New Certification" aria-label="Add New Certification"><span aria-hidden="true">➕</span><span
+            class="sr-only">Add New Certification</span></a>
+    <table>
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Issuer</th>
+                <th>Year</th>
+                <th>Link</th>
+                <th>Description</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in experience_data.certifications %}
+            <tr>
+                <td>{{ item.title }}</td>
+                <td>{{ item.get('issuer', 'N/A') }}</td>
+                <td>{{ item.get('year', 'N/A') }}</td>
+                <td>{% if item.get('link') %}<a href="{{ item.get('link') }}" target="_blank">Link</a>{% else %}N/A{%
+                    endif %}</td>
+                <td>{{ item.get('description', '')[:100] }}...</td>
+                <td class="actions">
+                    <a href="{{ url_for('admin_dashboard', section='edit_experience', id=loop.index0, category='certification') }}"
+                        class="action-btn edit-btn" title="Edit Certification" aria-label="Edit Certification"><span
+                            aria-hidden="true">✏️</span><span class="sr-only">Edit</span></a>
+                    <button type="button" class="action-btn delete-btn" title="Delete Certification"
+                        aria-label="Delete Certification"
+                        onclick="showConfirmModal({action: 'delete_experience', id: '{{ loop.index0 }}', category: 'certification'})"><span
+                            aria-hidden="true">🗑️</span><span class="sr-only">Delete</span></button>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% elif current_section == 'add_experience' or current_section == 'edit_experience' %}
+<div class="admin-card">
+    <h2>{{ form_title }} {{ category | capitalize }}</h2>
+    <form method="POST">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+        <div class="form-group">
+            <label for="title">Title:</label>
+            <input type="text" id="title" name="title" value="{{ experience.title if experience else '' }}" required>
+        </div>
+
+        {% if category == 'internship' %}
+        <div class="form-group">
+            <label for="company">Company:</label>
+            <input type="text" id="company" name="company" value="{{ experience.company if experience else '' }}">
+        </div>
+        <div class="form-group">
+            <label for="duration">Duration:</label>
+            <input type="text" id="duration" name="duration" value="{{ experience.duration if experience else '' }}">
+        </div>
+        {% elif category == 'thesis' %}
+        <div class="form-group">
+            <label for="university">University:</label>
+            <input type="text" id="university" name="university"
+                value="{{ experience.university if experience else '' }}">
+        </div>
+        <div class="form-group">
+            <label for="year">Year:</label>
+            <input type="text" id="year" name="year" value="{{ experience.year if experience else '' }}">
+        </div>
+        {% elif category == 'certification' %}
+        <div class="form-group">
+            <label for="issuer">Issuer:</label>
+            <input type="text" id="issuer" name="issuer" value="{{ experience.issuer if experience else '' }}">
+        </div>
+        <div class="form-group">
+            <label for="year">Year:</label>
+            <input type="text" id="year" name="year" value="{{ experience.year if experience else '' }}">
+        </div>
+        <div class="form-group">
+            <label for="link">Link (Optional):</label>
+            <input type="url" id="link" name="link" value="{{ experience.link if experience else '' }}">
+        </div>
+        {% endif %}
+
+        <div class="form-group">
+            <label for="description">Description:</label>
+            <textarea id="description" name="description"
+                rows="6">{{ experience.description if experience else '' }}</textarea>
+        </div>
+
+        <button type="submit" class="add-new-btn">Save {{ category | capitalize }}</button>
+        <a href="{{ url_for('admin_dashboard', section='experience') }}" class="action-btn edit-btn"
+            style="margin-left: 10px;">Cancel</a>
+    </form>
+</div>
+{% elif current_section == 'contact' %}
+<div class="admin-card">
+    <h2>Manage Contact Information</h2>
+    <form method="POST">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" value="{{ contact_settings.email }}" required>
+        </div>
+        <div class="form-group">
+            <label for="phone">Phone:</label>
+            <input type="tel" id="phone" name="phone" value="{{ contact_settings.phone }}">
+        </div>
+        <div class="form-group">
+            <label for="linkedin">LinkedIn URL:</label>
+            <input type="url" id="linkedin" name="linkedin" value="{{ contact_settings.linkedin }}">
+        </div>
+        <div class="form-group">
+            <label for="github">GitHub URL:</label>
+            <input type="url" id="github" name="github" value="{{ contact_settings.github }}">
+        </div>
+        <button type="submit" class="add-new-btn">Save Contact Settings</button>
+    </form>
+</div>
+
+{% elif current_section == 'about' %}
+<div class="admin-card">
+    <h2>👤 About Me Settings</h2>
+
+    <!-- Profile Picture Section -->
+    <h3>Profile Picture</h3>
+    <div class="profile-container">
+        {% if data.profile_picture and data.profile_picture.filepath %}
+        <div class="profile-image-wrapper">
+            <img src="{{ url_for('static', filename=data.profile_picture.filepath.split('/static/')[1]) }}"
+                alt="Profile Picture" class="profile-image">
+            <div class="profile-image-border"></div>
+        </div>
+        {% else %}
+        <p>No profile picture uploaded yet.</p>
+        {% endif %}
+    </div>
+    <form method="POST" enctype="multipart/form-data" action="{{ url_for('admin_dashboard', section='about') }}"
+        id="profilePicForm">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+        <div class="form-group">
+            <label for="profile_pic">Upload New Profile Picture:</label>
+            <input type="file" id="profile_pic" name="profile_pic" accept="image/*">
+            <div id="profilePicError" style="color: #dc3545; margin-top: 5px; display: none;"></div>
+        </div>
+        <button type="submit" class="add-new-btn">Upload Picture</button>
+    </form>
+
+    <hr class="admin-separator">
+
+    <form method="POST" action="{{ url_for('admin_dashboard', section='about') }}">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+        <h3>Hero Section</h3>
+        <div class="form-group">
+            <label for="hero_title">Hero Title:</label>
+            <input type="text" id="hero_title" name="hero_title" value="{{ about_settings.hero_title or '' }}" required>
+        </div>
+        <div class="form-group">
+            <label for="hero_subtitle">Hero Subtitle:</label>
+            <input type="text" id="hero_subtitle" name="hero_subtitle" value="{{ about_settings.hero_subtitle or '' }}"
+                required>
+        </div>
+        <div class="form-group">
+            <label for="hero_description">Hero Description:</label>
+            <textarea id="hero_description" name="hero_description" rows="4"
+                required>{{ about_settings.hero_description or '' }}</textarea>
+        </div>
+
+        <h3>About Text</h3>
+        <div class="form-group">
+            <label for="about_text">About Text:</label>
+            <textarea id="about_text" name="about_text" rows="8"
+                required>{{ about_settings.about_text or '' }}</textarea>
+        </div>
+
+        <h3>Highlights</h3>
+        {% for i in range(1, 4) %}
+        <h4>Highlight {{ i }}</h4>
+        <div class="form-group">
+            <label for="highlight{{ i }}_emoji">Emoji:</label>
+            <input type="text" id="highlight{{ i }}_emoji" name="highlight{{ i }}_emoji"
+                value="{{ about_settings['highlight' ~ i ~ '_emoji'] or '' }}">
+        </div>
+        <div class="form-group">
+            <label for="highlight{{ i }}_title">Title:</label>
+            <input type="text" id="highlight{{ i }}_title" name="highlight{{ i }}_title"
+                value="{{ about_settings['highlight' ~ i ~ '_title'] or '' }}">
+        </div>
+        <div class="form-group">
+            <label for="highlight{{ i }}_description">Description:</label>
+            <textarea id="highlight{{ i }}_description" name="highlight{{ i }}_description"
+                rows="3">{{ about_settings['highlight' ~ i ~ '_description'] or '' }}</textarea>
+        </div>
+        {% endfor %}
+
+        <button type="submit" class="action-btn edit-btn">Save About Settings</button>
+    </form>
+
+    <hr class="admin-separator">
+
+    <h3>Manage Hero Section Buttons</h3>
+
+    <h4>Add New Button</h4>
+    <form method="POST" action="{{ url_for('admin_dashboard', section='about') }}">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+        <input type="hidden" name="action" value="add_hero_button">
+        <div class="form-group">
+            <label for="new_button_text">Button Text:</label>
+            <input type="text" id="new_button_text" name="text" required>
+        </div>
+        <div class="form-group">
+            <label for="new_button_link">Button Link (e.g., /static/documents/resume.pdf or #contact):</label>
+            <input type="text" id="new_button_link" name="link" required>
+        </div>
+        <div class="form-group">
+            <label for="new_button_icon">Button Icon (Emoji, e.g., 📄 or 📬):</label>
+            <input type="text" id="new_button_icon" name="icon" maxlength="2" placeholder="Emoji" required>
+        </div>
+        <button type="submit" class="add-new-btn">Add Button</button>
+    </form>
+
+    <hr class="admin-separator">
+
+    <h4>Existing Buttons</h4>
+    {% if about_settings.hero_buttons %}
+    <div class="button-management-grid">
+        {% for button in about_settings.hero_buttons %}
+        <div class="admin-card button-item">
+            <h5>Button {{ loop.index }}</h5>
+            <form method="POST" action="{{ url_for('admin_dashboard', section='about') }}" class="button-edit-form">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                <input type="hidden" name="action" value="edit_hero_button">
+                <input type="hidden" name="button_index" value="{{ loop.index0 }}">
+                <div class="form-group">
+                    <label>Text:</label>
+                    <input type="text" name="text" value="{{ button.text }}" required>
+                </div>
+                <div class="form-group">
+                    <label>Link:</label>
+                    <input type="text" name="link" value="{{ button.link }}" required>
+                </div>
+                <div class="form-group">
+                    <label>Icon:</label>
+                    <input type="text" name="icon" value="{{ button.icon }}" maxlength="2" placeholder="Emoji">
+                </div>
+                <div class="form-group checkbox-group">
+                    <input type="checkbox" id="visible_{{ loop.index0 }}" name="is_visible" value="true" {% if
+                        button.is_visible %}checked{% endif %}>
+                    <label for="visible_{{ loop.index0 }}">Visible on Homepage</label>
+                </div>
+                <button type="submit" class="action-btn edit-btn">Save Changes</button>
+            </form>
+            <form method="POST" action="{{ url_for('admin_dashboard', section='about') }}"
+                onsubmit="event.preventDefault(); showConfirmModal({action: 'delete_hero_button', buttonIndex: '{{ loop.index0 }}'}); return false;"
+                style="display:inline; margin-left: 10px;">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                <button type="button" class="action-btn delete-btn"
+                    onclick="showConfirmModal({action: 'delete_hero_button', buttonIndex: '{{ loop.index0 }}'})">Delete</button>
+            </form>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <p>No custom hero buttons added yet.</p>
+    {% endif %}
+</div>
+
+
+
+{% elif current_section == 'export_data' %}
+<div class="admin-card">
+    <h2>📥 Export Portfolio Data</h2>
+    <p>Click the button below to export all your portfolio data (Skills, Projects, Experience, and Contact Settings)
+        from the database into a JSON file.</p>
+    <a href="{{ url_for('admin_dashboard', section='export_data') }}" class="add-new-btn">Download Data as JSON</a>
+</div>
+{% elif current_section == 'change_password' %}
+{% include 'change_password.html' %}
+{% elif current_section == 'change_username' %}
+{% include 'change_username.html' %}
+{% elif current_section == 'settings' %}
+<div class="admin-card">
+    <h2>⚙️ System Settings</h2>
+    <form method="POST" action="{{ url_for('admin_dashboard', section='settings') }}">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+        <input type="hidden" name="action" value="update_system_settings">
+        <div class="form-group">
+            <label for="default_portfolio">Default Portfolio</label>
+            <select id="default_portfolio" name="default_portfolio" required>
+                {% for portfolio in portfolios %}
+                <option value="{{ portfolio.id }}" {% if settings.default_portfolio==portfolio.id or portfolio.is_active
+                    %}selected{% endif %}>{{ portfolio.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group">
+            <input type="checkbox" id="allow_public_access" name="allow_public_access" {% if
+                settings.allow_public_access %}checked{% endif %}>
+            <label for="allow_public_access">Allow Public Access</label>
+        </div>
+        <div class="form-group">
+            <input type="checkbox" id="maintenance_mode" name="maintenance_mode" {% if settings.maintenance_mode
+                %}checked{% endif %}>
+            <label for="maintenance_mode">Maintenance Mode</label>
+        </div>
+        <div class="form-group">
+            <label for="default_theme">Default Theme</label>
+            <select id="default_theme" name="default_theme">
+                <option value="Default Dark" {% if settings.default_theme=='Default Dark' or not settings.default_theme
+                    %}selected{% endif %}>Default Dark</option>
+                <option value="Default Light" {% if settings.default_theme=='Default Light' %}selected{% endif %}>
+                    Default Light</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="section_alignment">Section Alignment</label>
+            <select id="section_alignment" name="section_alignment">
+                <option value="center" {% if settings.section_alignment=='center' or not settings.section_alignment
+                    %}selected{% endif %}>Center</option>
+                <option value="left" {% if settings.section_alignment=='left' %}selected{% endif %}>Left</option>
+            </select>
+            <small style="display: block; margin-top: 0.5em; color: #aaa;">Controls the alignment of sections below the hero (About Me, Skills, Experience, etc.)</small>
+        </div>
+        <button type="submit" class="add-new-btn"><span aria-hidden="true">💾</span> Save Settings</button>
+    </form>
+</div>
+<div class="admin-card">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1em;">
+        <h2>Portfolio Management</h2>
+        <a href="{{ url_for('admin_dashboard', section='add_portfolio') }}" class="add-new-btn">+ New Portfolio</a>
+    </div>
+    {% if portfolios and portfolios|length > 0 %}
+    <div class="portfolio-list">
+        {% for portfolio in portfolios|sort(attribute='is_active', reverse=True) %}
+        <div class="portfolio-card"
+            style="margin-bottom: 1em; padding: 1em; border-radius: 12px; background: var(--card-dark); display: flex; align-items: center; justify-content: space-between;">
+            <div style="flex:1;">
+                <h3 style="margin:0;">{{ portfolio.name }}</h3>
+                <p style="margin:0.2em 0 0.5em 0;">{{ portfolio.description }}</p>
+                <span class="badge"
+                    style="padding: 0.3em 0.8em; border-radius: 8px; font-size: 0.95em; {% if portfolio.is_active %}background: #28a745; color: #fff;{% else %}background: #dc3545; color: #fff;{% endif %}">
+                    {% if portfolio.is_active %}Active{% else %}Inactive{% endif %}
+                </span>
+                <span style="margin-left: 1em; color: #aaa; font-size: 0.95em;">{{ portfolio.projects|length if
+                    portfolio.projects else 0 }} projects</span>
+            </div>
+            <div class="portfolio-actions-grid">
+                {% if not portfolio.is_active %}
+                <form action="{{ url_for('admin_dashboard', section='settings') }}" method="POST"
+                    style="display:inline;">
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                    <input type="hidden" name="action" value="set_active">
+                    <input type="hidden" name="portfolio_id" value="{{ portfolio.id }}">
+                    <button type="submit" class="portfolio-action-btn set-active-btn"
+                        title="Set this portfolio as the active one" aria-label="Set Active"><span
+                            aria-hidden="true">⭐</span><span class="sr-only">Set Active</span></button>
+                </form>
+                {% endif %}
+                <a href="{{ url_for('view_portfolio', portfolio_id=portfolio.id) }}" class="portfolio-action-btn"
+                    title="View Portfolio" aria-label="View Portfolio"><span aria-hidden="true">👁️</span><span
+                        class="sr-only">View</span></a>
+                <a href="{{ url_for('admin_dashboard', section='edit_portfolio', id=portfolio.id) }}"
+                    class="portfolio-action-btn edit-btn" title="Edit this portfolio" aria-label="Edit Portfolio"><span
+                        aria-hidden="true">✏️</span><span class="sr-only">Edit</span></a>
+                <form action="{{ url_for('admin_dashboard', section='settings') }}" method="POST"
+                    style="display:inline;">
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                    <input type="hidden" name="action" value="delete_portfolio">
+                    <input type="hidden" name="portfolio_id" value="{{ portfolio.id }}">
+                    <button type="submit" class="portfolio-action-btn delete-btn" title="Delete this portfolio"
+                        aria-label="Delete Portfolio"><span aria-hidden="true">🗑️</span><span
+                            class="sr-only">Delete</span></button>
+                </form>
+                <form action="{{ url_for('admin_dashboard', section='settings') }}" method="POST"
+                    class="portfolio-duplicate-group" style="display:inline;">
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                    <input type="hidden" name="action" value="duplicate_portfolio">
+                    <input type="hidden" name="portfolio_id" value="{{ portfolio.id }}">
+                    <input type="text" name="new_name" placeholder="New name" required
+                        class="form-control admin-form-input" style="width: 120px;">
+                    <button type="submit" class="portfolio-action-btn duplicate-btn" title="Duplicate this portfolio"
+                        aria-label="Duplicate Portfolio"><span aria-hidden="true">📄</span><span
+                            class="sr-only">Duplicate</span></button>
+                </form>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <p>No portfolios found. <a href="{{ url_for('admin_dashboard', section='add_portfolio') }}">Create your first
+            portfolio</a> to get started!</p>
+    {% endif %}
+</div>
+{% elif current_section == 'education' %}
+<div class="admin-card">
+    <h2>Manage Education</h2>
+    <p>Add, edit, or delete your educational background and qualifications.</p>
+    <a href="{{ url_for('admin_dashboard', section='add_education') }}" class="add-new-btn" title="Add New Education"
+        aria-label="Add New Education"><span aria-hidden="true">➕</span><span class="sr-only">Add New
+            Education</span></a>
+    <table>
+        <thead>
+            <tr>
+                <th>Degree</th>
+                <th>University</th>
+                <th>Year</th>
+                <th>GPA</th>
+                <th>Honors</th>
+                <th>Description</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in education_data %}
+            <tr>
+                <td>{{ item.degree }}</td>
+                <td>{{ item.get('university', 'N/A') }}</td>
+                <td>{{ item.get('year', 'N/A') }}</td>
+                <td>{{ item.get('gpa', 'N/A') }}</td>
+                <td>{{ item.get('honors', 'N/A') }}</td>
+                <td>{{ item.get('description', '')[:100] }}...</td>
+                <td class="actions">
+                    <a href="{{ url_for('admin_dashboard', section='edit_education', id=loop.index0) }}"
+                        class="action-btn edit-btn" title="Edit Education" aria-label="Edit Education"><span
+                            aria-hidden="true">✏️</span><span class="sr-only">Edit</span></a>
+                    <button type="button" class="action-btn delete-btn" title="Delete Education"
+                        aria-label="Delete Education"
+                        onclick="showConfirmModal({action: 'delete_education', id: '{{ loop.index0 }}'})"><span
+                            aria-hidden="true">🗑️</span><span class="sr-only">Delete</span></button>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% elif current_section == 'add_education' or current_section == 'edit_education' %}
+<div class="admin-card">
+    <h2>{{ form_title }} Education Entry</h2>
+    <form method="POST">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+        <div class="form-group">
+            <label for="degree">Degree/Qualification:</label>
+            <input type="text" id="degree" name="degree" value="{{ education.degree if education else '' }}" required>
+        </div>
+        <div class="form-group">
+            <label for="university">University/Institution:</label>
+            <input type="text" id="university" name="university" value="{{ education.university if education else '' }}"
+                required>
+        </div>
+        <div class="form-group">
+            <label for="year">Year:</label>
+            <input type="text" id="year" name="year" value="{{ education.year if education else '' }}" required>
+        </div>
+        <div class="form-group">
+            <label for="gpa">GPA/Score (Optional):</label>
+            <input type="text" id="gpa" name="gpa" value="{{ education.gpa if education else '' }}"
+                placeholder="e.g., 8.5/10, 3.8/4.0">
+        </div>
+        <div class="form-group">
+            <label for="honors">Honors/Awards (Optional):</label>
+            <input type="text" id="honors" name="honors" value="{{ education.honors if education else '' }}"
+                placeholder="e.g., Dean's List, Academic Excellence">
+        </div>
+        <div class="form-group">
+            <label for="certificate_link">Certificate Link (Optional):</label>
+            <input type="url" id="certificate_link" name="certificate_link"
+                value="{{ education.certificate_link if education else '' }}"
+                placeholder="https://example.com/certificate">
+        </div>
+        <div class="form-group">
+            <label for="description">Description:</label>
+            <textarea id="description" name="description"
+                rows="6">{{ education.description if education else '' }}</textarea>
+        </div>
+        <button type="submit" class="add-new-btn">Save Education Entry</button>
+        <a href="{{ url_for('admin_dashboard', section='education') }}" class="action-btn edit-btn"
+            style="margin-left: 10px;">Cancel</a>
+    </form>
+</div>
+{% endif %}

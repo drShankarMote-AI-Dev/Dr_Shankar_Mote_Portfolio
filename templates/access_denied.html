@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Access Denied - Portfolio Unavailable</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/main_v3.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/access_denied.css') }}">
+</head>
+
+<body>
+  <div class="access-denied-container">
+    <div class="access-denied-header">
+      <div class="access-denied-icon">🔒</div>
+      <h1 class="access-denied-title">Portfolio Access Restricted</h1>
+      <p class="access-denied-subtitle">This portfolio is currently not available for public viewing</p>
+      <p class="access-denied-message">
+        The portfolio owner has temporarily disabled public access to this site.
+        This could be due to maintenance, updates, or privacy settings.
+        Please use the contact information below to get in touch for access or inquiries.
+      </p>
+    </div>
+
+    <div class="access-content">
+      <div class="contact-info-section">
+        <h2 class="section-title">
+          <span aria-hidden="true">📞</span>
+          Contact Information
+        </h2>
+        <div class="contact-item">
+          <div class="contact-icon">📧</div>
+          <div class="contact-details">
+            <h4>Email</h4>
+            <p><a href="mailto:drshankarmote@gmail.com">drshankarmote@gmail.com</a></p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📱</div>
+          <div class="contact-details">
+            <h4>Phone</h4>
+            <p><a href="tel:+919699003635">+91 9699003635</a></p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">💼</div>
+          <div class="contact-details">
+            <h4>LinkedIn</h4>
+            <p><a href="https://linkedin.com/in/drshankarmote" target="_blank">linkedin.com/in/drshankarmote</a></p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">🐙</div>
+          <div class="contact-details">
+            <h4>GitHub</h4>
+            <p><a href="https://github.com/yourusername" target="_blank">github.com/yourusername</a></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-form-section">
+        <h2 class="section-title">
+          <span aria-hidden="true">✉️</span>
+          Send Message
+        </h2>
+        <form class="contact-form" id="contactForm">
+          <div class="form-group">
+            <label for="name">
+              <span aria-hidden="true">👤</span>
+              Name
+            </label>
+            <input type="text" id="name" name="name" required placeholder="Your full name">
+          </div>
+          <div class="form-group">
+            <label for="email">
+              <span aria-hidden="true">📧</span>
+              Email
+            </label>
+            <input type="email" id="email" name="email" required placeholder="your.email@example.com">
+          </div>
+          <div class="form-group">
+            <label for="subject">
+              <span aria-hidden="true">📝</span>
+              Subject
+            </label>
+            <input type="text" id="subject" name="subject" required placeholder="Portfolio Access Request">
+          </div>
+          <div class="form-group">
+            <label for="message">
+              <span aria-hidden="true">💬</span>
+              Message
+            </label>
+            <textarea id="message" name="message" required
+              placeholder="Please describe your reason for accessing the portfolio or any questions you may have..."></textarea>
+          </div>
+          <button type="submit" class="submit-btn">
+            <span aria-hidden="true">📤</span>
+            Send Message
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <div class="admin-login-section">
+      <p style="margin-bottom: 1rem; opacity: 0.8;">Are you the portfolio owner?</p>
+      <a href="{{ url_for('login') }}" class="admin-login-link">
+        <span aria-hidden="true">🔐</span>
+        Admin Login
+      </a>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('contactForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      // Get form data
+      const formData = new FormData(this);
+      const data = {
+        name: formData.get('name'),
+        email: formData.get('email'),
+        subject: formData.get('subject'),
+        message: formData.get('message')
+      };
+
+      // Show success message (in a real implementation, you'd send this to your server)
+      alert('Thank you for your message! This is a demo form. In a real implementation, this would be sent to the portfolio owner.\n\n' +
+        'Name: ' + data.name + '\n' +
+        'Email: ' + data.email + '\n' +
+        'Subject: ' + data.subject + '\n' +
+        'Message: ' + data.message);
+
+      // Reset form
+      this.reset();
+    });
+  </script>
+</body>
+
+</html>

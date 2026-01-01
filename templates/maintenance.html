@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Site Under Maintenance</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/main_v3.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/maintenance.css') }}">
+</head>
+
+<body>
+  <div class="maintenance-container">
+    <div class="maintenance-header">
+      <div class="maintenance-icon">🔧</div>
+      <h1 class="maintenance-title">Site Under Maintenance</h1>
+      <p class="maintenance-subtitle">We're working hard to improve your experience</p>
+      <p class="maintenance-message">
+        We're currently performing scheduled maintenance to enhance our portfolio website.
+        This includes updates, security improvements, and performance optimizations.
+        We apologize for any inconvenience and appreciate your patience.
+      </p>
+    </div>
+
+    <div class="maintenance-content">
+      <div class="status-section">
+        <h2 class="section-title">
+          <span aria-hidden="true">📊</span>
+          Maintenance Status
+        </h2>
+        <div class="status-item">
+          <div class="status-icon">🔄</div>
+          <div class="status-details">
+            <h4>System Updates</h4>
+            <p>Updating core components and dependencies</p>
+            <div class="progress-bar">
+              <div class="progress-fill"></div>
+            </div>
+          </div>
+        </div>
+        <div class="status-item">
+          <div class="status-icon">🔒</div>
+          <div class="status-details">
+            <h4>Security Enhancements</h4>
+            <p>Implementing latest security protocols</p>
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: 90%;"></div>
+            </div>
+          </div>
+        </div>
+        <div class="status-item">
+          <div class="status-icon">⚡</div>
+          <div class="status-details">
+            <h4>Performance Optimization</h4>
+            <p>Optimizing loading speeds and responsiveness</p>
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: 60%;"></div>
+            </div>
+          </div>
+        </div>
+        <div class="estimated-time">
+          <h4>⏱️ Estimated Completion</h4>
+          <p>Approximately 30-45 minutes</p>
+        </div>
+      </div>
+
+      <div class="contact-section">
+        <h2 class="section-title">
+          <span aria-hidden="true">📞</span>
+          Contact Information
+        </h2>
+        <div class="contact-item">
+          <div class="contact-icon">📧</div>
+          <div class="contact-details">
+            <h4>Email</h4>
+            <p><a href="mailto:drshankarmote@gmail.com">drshankarmote@gmail.com</a></p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📱</div>
+          <div class="contact-details">
+            <h4>Phone</h4>
+            <p><a href="tel:+919699003635">+91 9699003635</a></p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">💼</div>
+          <div class="contact-details">
+            <h4>LinkedIn</h4>
+            <p><a href="https://linkedin.com/in/drshankarmote" target="_blank">linkedin.com/in/drshankarmote</a></p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">🐙</div>
+          <div class="contact-details">
+            <h4>GitHub</h4>
+            <p><a href="https://github.com/yourusername" target="_blank">github.com/yourusername</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="admin-login-section">
+      <p style="margin-bottom: 1rem; opacity: 0.8;">Are you the portfolio owner?</p>
+      <a href="{{ url_for('login') }}" class="admin-login-link">
+        <span aria-hidden="true">🔐</span>
+        Admin Login
+      </a>
+    </div>
+  </div>
+</body>
+
+</html>

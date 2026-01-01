@@ -1,0 +1,14 @@
+{
+    "admin_credentials": {
+        "username": "admin",
+        "password_hash": "pbkdf2:sha256:600000$Jrx0vSf6INC2FRTh$2a129bd1a38a843e6e51a5e0e7c2f9d55491a8a7da51570c0763cf0df1ddc5f1"
+    },
+    "settings": {
+        "site_title": "SSU",
+        "default_portfolio": "main",
+        "allow_public_access": true,
+        "maintenance_mode": false,
+        "default_theme": "Default Dark",
+        "section_heading_alignment": "center"
+    }
+}

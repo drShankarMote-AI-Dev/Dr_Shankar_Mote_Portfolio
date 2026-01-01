@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Character encoding and viewport settings for proper rendering on all devices -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Enhanced SEO Meta Tags -->
+  <meta name="description"
+    content="Shankar Managini Mote - Biotechnology & Web Development Professional. Expert in DNA barcoding, molecular diagnostics, and modern web technologies. View portfolio, projects, and connect.">
+  <meta name="keywords"
+    content="Shankar Managini Mote, Biotechnology, Web Development, DNA Barcoding, Molecular Diagnostics, Bioinformatics, Python, JavaScript, Flask, Portfolio">
+  <meta name="author" content="Shankar Managini Mote">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph Meta Tags for Social Media -->
+  <meta property="og:title" content="Shankar Managini Mote | Biotechnology & Web Development Portfolio">
+  <meta property="og:description"
+    content="Professional portfolio showcasing expertise in biotechnology and web development. Specialized in DNA barcoding, molecular diagnostics, and modern web technologies.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="{{ request.url }}">
+  <meta property="og:image" content="{{ url_for('static', filename='images/shankar.jpeg', _external=True) }}">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:site_name" content="Shankar Managini Mote Portfolio">
+
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Shankar Managini Mote | Biotechnology & Web Development Portfolio">
+  <meta name="twitter:description"
+    content="Professional portfolio showcasing expertise in biotechnology and web development. Specialized in DNA barcoding, molecular diagnostics, and modern web technologies.">
+  <meta name="twitter:image" content="{{ url_for('static', filename='images/shankar.jpeg', _external=True) }}">
+
+  <!-- Page title with keywords for SEO -->
+  <title>Shankar Managini Mote | Biotechnology & Web Development Portfolio</title>
+
+  <!-- Favicon and App Icons -->
+  <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
+  <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='images/apple-touch-icon.png') }}">
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='images/favicon-32x32.png') }}">
+  <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='images/favicon-16x16.png') }}">
+
+  <!-- Preload critical resources -->
+  <link rel="preload" href="{{ url_for('static', filename='css/main_v3.css') }}?v=10" as="style">
+  <link rel="preload" href="{{ url_for('static', filename='images/shankar.jpeg') }}" as="image">
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+    as="style">
+
+  <!-- CSS Stylesheets: Only main_v3.css is now needed -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/main_v3.css') }}?v=10">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+
+  <!-- Google Fonts: Inter with various weights for consistent typography -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Script to ensure page always starts at the top on refresh by removing URL hash -->
+  <script>
+    if (window.location.hash) {
+      const cleanURL = window.location.origin + window.location.pathname + window.location.search;
+      window.location.replace(cleanURL);
+    }
+  </script>
+
+  <!-- Inline styles for accessibility skip link 
+       - This is intentionally inlined to ensure it loads immediately
+       - The skip link allows keyboard users to bypass navigation
+  -->
+</head>
+
+<body class="dark-mode"> <!-- Default to dark mode - toggleable via theme switch -->
+  <!-- Loading spinner for better UX -->
+  <div class="loading-spinner" id="loading-spinner">
+    <div class="spinner"></div>
+  </div>
+
+  <!-- Accessibility: Skip navigation link for keyboa
+  rd users -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Main navigation with ARIA labels for screen readers -->
+  <nav class="navbar" aria-label="Main site navigation">
+    <div class="logo">Shankar</div>
+    <ul class="nav-links" id="main-nav">
+      <li class="mobile-theme-toggle">
+        <div class="theme-toggle-container"><label class="switch"><input type="checkbox" id="theme-toggle-mobile"
+              aria-label="Toggle dark and light mode"><span class="slider"><span
+                class="icon-knob"></span></span></label></div>
+      </li>
+      <li><a href="#home">🏠 Home</a></li>
+      <li><a href="#about">👤 About</a></li>
+      <li><a href="#skills">🛠️ Skills</a></li>
+      <li><a href="#projects">🚀 Projects</a></li>
+      <li><a href="#experience">📚 Experience</a></li>
+      <li><a href="#education">🎓 Education</a></li>
+      <li><a href="#achievements">🏆 Achievements</a></li>
+      <li><a href="#interests">🎯 Interests</a></li>
+      <li><a href="#contact">📫 Contact</a></li>
+    </ul>
+    <div class="theme-toggle-container desktop-theme-toggle">
+      <label class="switch">
+        <input type="checkbox" id="theme-toggle" aria-label="Toggle dark and light mode">
+        <span class="slider"><span class="icon-knob"></span></span>
+      </label>
+    </div>
+    <button class="mobile-menu-btn" aria-label="Open navigation menu" aria-controls="main-nav"
+      aria-expanded="false">☰</button>
+  </nav>
+
+  <!-- Hero section with tabindex for accessibility when using skip link -->
+  <section id="home" class="hero colorful-hero" tabindex="-1">
+    <div class="hero-flex">
+      <div class="hero-profile">
+        <div class="profile-container">
+          <div class="profile-image-wrapper">
+            <img src="{{ data.profile_picture.filepath }}" alt="Shankar Managini Mote" class="profile-image"
+              loading="eager">
+            <div class="profile-image-border"></div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-content">
+        <h1 class="hero-title">{{ data.about.hero_title }}</h1>
+        <p class="hero-subtitle">{{ data.about.hero_subtitle }}</p>
+        <p class="hero-description">{{ data.about.hero_description }}</p>
+        <div class="hero-socials">
+          <a href="{{ data.contact.linkedin }}" class="social-link linkedin" target="_blank" aria-label="LinkedIn">
+            <!-- LinkedIn SVG -->
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+              <rect width="32" height="32" rx="8" fill="#0077B5" />
+              <path
+                d="M10.666 13.333h2.667v8H10.666v-8zm1.333-4a1.333 1.333 0 110 2.667 1.333 1.333 0 010-2.667zm3.334 4h2.56v1.093h.037c.357-.677 1.23-1.393 2.533-1.393 2.707 0 3.2 1.787 3.2 4.107v4.193h-2.667v-3.72c0-.887-.016-2.027-1.28-2.027-1.28 0-1.48.96-1.48 1.953v3.794h-2.667v-8z"
+                fill="#fff" />
+            </svg>
+          </a>
+          <a href="{{ data.contact.github }}" class="social-link github" target="_blank" aria-label="GitHub">
+            <!-- GitHub SVG -->
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+              <rect width="32" height="32" rx="8" fill="#181717" />
+              <path
+                d="M16 7.333c-4.6 0-8.333 3.733-8.333 8.333 0 3.68 2.387 6.8 5.693 7.907.42.08.573-.18.573-.4v-1.387c-2.313.507-2.8-1.12-2.8-1.12-.38-.96-.933-1.213-.933-1.213-.76-.52.06-.507.06-.507.84.06 1.28.867 1.28.867.747 1.28 1.96.913 2.44.7.073-.54.293-.913.533-1.12-1.847-.213-3.787-.92-3.787-4.093 0-.907.32-1.653.853-2.24-.087-.213-.373-1.067.08-2.227 0 0 .707-.227 2.32.853a7.98 7.98 0 012.107-.28c.713.003 1.433.097 2.107.28 1.613-1.08 2.32-.853 2.32-.853.453 1.16.167 2.014.08 2.227.533.587.853 1.333.853 2.24 0 3.18-1.94 3.877-3.787 4.093.3.26.567.773.567 1.56v2.32c0 .22.153.48.573.4C21.947 22.466 24.333 19.346 24.333 15.666c0-4.6-3.733-8.333-8.333-8.333z"
+                fill="#fff" />
+            </svg>
+          </a>
+          <a href="mailto:{{ data.contact.email }}" class="social-link email" aria-label="Email">
+            <!-- Email SVG -->
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+              <rect width="32" height="32" rx="8" fill="#EA4335" />
+              <path
+                d="M8 11.333A2.667 2.667 0 0110.667 8h10.666A2.667 2.667 0 0124 10.667v10.666A2.667 2.667 0 0121.333 24H10.667A2.667 2.667 0 018 21.333V11.333zm2.667 0v.56l5.333 4.44 5.333-4.44v-.56H10.667zm10.666 1.227l-5.333 4.44-5.333-4.44v8.773h10.666v-8.773z"
+                fill="#fff" />
+            </svg>
+          </a>
+          <a href="tel:+91{{ data.contact.phone }}" class="social-link phone" aria-label="Phone">
+            <!-- Phone SVG -->
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+              <rect width="32" height="32" rx="8" fill="#34A853" />
+              <path
+                d="M22.667 20.667v2a1.333 1.333 0 01-1.453 1.333c-6.68-.587-11.88-5.787-12.467-12.467A1.333 1.333 0 019.333 9.333h2a1.333 1.333 0 011.333 1.173c.093.68.24 1.347.44 1.987a1.333 1.333 0 01-.307 1.36l-.84.84a10.667 10.667 0 005.333 5.333l.84-.84a1.333 1.333 0 011.36-.307c.64.2 1.307.347 1.987.44A1.333 1.333 0 0122.667 20.667z"
+                fill="#fff" />
+            </svg>
+          </a>
+        </div>
+        <div class="hero-cta">
+          {% for button in data.about.hero_buttons %}
+          {% if button.is_visible %}
+          <a href="{{ button.link }}" {% if button.link.startswith('http') or button.link.startswith('https')
+            %}target="_blank" {% endif %} {% if 'resume.pdf' in button.link.lower() %}download{% endif %}
+            class="cta-btn {% if loop.first %}primary-btn{% else %}secondary-btn{% endif %}">
+            <span class="btn-icon">{{ button.icon }}</span>
+            <span class="btn-text">{{ button.text }}</span>
+            <span class="btn-arrow">→</span>
+          </a>
+          {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main content area - target for skip link -->
+  <main id="main-content" class="sections-{{ data.get('settings', {}).get('section_alignment', 'center') }}">
+    <!-- About section with semantic structure -->
+    <section id="about" class="card">
+      <h2><span class="emoji" aria-hidden="true">👨‍💻</span> About Me</h2>
+      <div class="about-content">
+        <div class="about-text">
+          <div class="about-summary">
+            <p><strong>SUMMARY</strong></p>
+            <p>Highly Motivated Web & Python Developer skilled in building scalable full-stack web apps with React,
+              Flask, and REST APIs. Experienced in integrating AI features using tools like Cursor AI and GitHub
+              Copilot. Passionate about smart, data-driven platforms in biotech, research, and automation. Fast learner
+              with strong debugging skills and a focus on clean, high-performance code.</p>
+          </div>
+          <!-- Container for dynamically populated highlights -->
+          <div class="about-highlights" id="about-highlights-container">
+            <!-- Highlights will be populated by script.js -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills section with two-column grid layout -->
+    <section id="skills" class="card">
+      <h2><span class="emoji" aria-hidden="true">🛠️</span> Skills</h2>
+      <div class="skills-grid">
+        <!-- Technical skills column -->
+        <div class="skill-category">
+          <h3><span class="emoji" aria-hidden="true">💻</span> Technical Skills</h3>
+          <ul id="technical-skills" class="skills-list">
+            <!-- Skills will be populated by script.js -->
+          </ul>
+        </div>
+        <!-- Soft skills column -->
+        <div class="skill-category">
+          <h3><span class="emoji" aria-hidden="true">🧠</span> Soft Skills</h3>
+          <ul id="soft-skills" class="skills-list">
+            <!-- Skills will be populated by script.js -->
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience section with timeline layout -->
+    <section id="experience" class="card">
+      <h2><span class="emoji" aria-hidden="true">📋</span> Experience</h2>
+      <div class="experience-timeline">
+        <!-- Internships subsection -->
+        <div class="timeline-section">
+          <h3><span class="emoji" aria-hidden="true">🔬</span> Internships</h3>
+          <div id="internships-container" class="timeline-container">
+            <!-- Internships will be populated by script.js -->
+          </div>
+        </div>
+        <!-- Thesis subsection -->
+        <div class="timeline-section">
+          <h3><span class="emoji" aria-hidden="true">📝</span> Thesis</h3>
+          <div id="thesis-container" class="timeline-container">
+            <!-- Thesis will be populated by script.js -->
+          </div>
+        </div>
+        <!-- Certifications subsection -->
+        <div class="timeline-section">
+          <h3><span class="emoji" aria-hidden="true">🏆</span> Certifications</h3>
+          <div id="certifications-container" class="timeline-container">
+            <!-- Certifications will be populated by script.js -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects section with grid layout for project cards -->
+    <section id="projects" class="card">
+      <h2><span class="emoji" aria-hidden="true">🚀</span> Featured Projects</h2>
+      <div class="projects-grid" id="projects-container">
+        <!-- Projects will be populated by script.js -->
+      </div>
+    </section>
+
+    <!-- Education section with timeline of academic history -->
+    <section id="education" class="card">
+      <h2><span class="emoji" aria-hidden="true">🎓</span> Education</h2>
+      <div class="education-timeline" id="education-container">
+        <!-- Education will be populated by script.js -->
+      </div>
+    </section>
+
+    <!-- Achievements section -->
+    <section id="achievements" class="card">
+      <h2><span class="emoji" aria-hidden="true">🏆</span> Achievements</h2>
+      <div class="achievements-container" id="achievements-container">
+        <!-- Achievements will be populated by script.js -->
+      </div>
+    </section>
+
+    <!-- Interests section -->
+    <section id="interests" class="card">
+      <h2><span class="emoji" aria-hidden="true">🎯</span> Interests</h2>
+      <div class="interests-container" id="interests-container">
+        <!-- Interests will be populated by script.js -->
+      </div>
+    </section>
+
+    <!-- Contact section with two-column layout for info and form -->
+    <section id="contact" class="card">
+      <h2><span class="emoji" aria-hidden="true">📫</span> Contact Me</h2>
+      <div class="contact-container">
+        <div class="contact-info">
+          <h3>Get in Touch</h3>
+          <p><span class="emoji email-emoji">📧</span> <a href="mailto:{{ data.contact.email }}">{{ data.contact.email
+              }}</a></p>
+          <p><span class="emoji phone-emoji">📱</span> <a href="tel:+91{{ data.contact.phone }}">+91 {{
+              data.contact.phone }}</a></p>
+          <p><span class="emoji location-emoji">📍</span> <a href="https://maps.google.com/?q=Pune,India"
+              target="_blank">Pune, Maharashtra, India</a></p>
+          <p><span class="emoji linkedin-emoji">🔗</span> <a href="{{ data.contact.linkedin }}" target="_blank">LinkedIn
+              Profile</a></p>
+          <p><span class="emoji github-emoji">🐈</span> <a href="{{ data.contact.github }}" target="_blank">GitHub
+              Profile</a></p>
+
+          <!-- Contact form success/error messages -->
+          <div id="contact-messages" class="contact-messages"></div>
+        </div>
+        <div class="contact-form-container">
+          <form class="contact-form" id="contact-form" action="#" method="POST">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+            <div class="form-group">
+              <label for="name"><span class="emoji name-emoji">👤</span> Name *</label>
+              <input type="text" id="name" name="name" required minlength="2" maxlength="50"
+                placeholder="Your full name">
+              <span class="error-message" id="name-error"></span>
+            </div>
+            <div class="form-group">
+              <label for="email"><span class="emoji email-emoji">📧</span> Email *</label>
+              <input type="email" id="email" name="email" required placeholder="your.email@example.com">
+              <span class="error-message" id="email-error"></span>
+            </div>
+            <div class="form-group">
+              <label for="subject"><span class="emoji subject-emoji">📝</span> Subject</label>
+              <input type="text" id="subject" name="subject" maxlength="100" placeholder="What's this about?">
+              <span class="error-message" id="subject-error"></span>
+            </div>
+            <div class="form-group">
+              <label for="message"><span class="emoji message-emoji">💬</span> Message *</label>
+              <textarea id="message" name="message" rows="5" required minlength="10" maxlength="1000"
+                placeholder="Tell me about your project or inquiry..."></textarea>
+              <span class="error-message" id="message-error"></span>
+              <div class="char-count">
+                <span id="char-count">0</span>/1000 characters
+              </div>
+            </div>
+            <button type="submit" id="submit-btn">
+              <span class="btn-icon">🚀</span>
+              <span class="btn-text">Send Message</span>
+              <span class="btn-loading" style="display: none;">⏳</span>
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Site footer with copyright information -->
+  <footer>
+    <p>&copy; 2025 Shankar Managini Mote. All rights reserved.</p>
+  </footer>
+
+  <!-- JavaScript files loaded at the end for performance -->
+  <script src="{{ url_for('static', filename='js/script.js') }}?v=8"></script>
+  <script src="{{ url_for('static', filename='js/image-optimization.js') }}"></script>
+
+  <!-- Google Analytics (replace GA_MEASUREMENT_ID with your actual ID) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'GA_MEASUREMENT_ID');
+  </script>
+
+  <!-- Performance monitoring -->
+  <script>
+    // Track page load performance
+    window.addEventListener('load', function () {
+      if ('performance' in window) {
+        const perfData = performance.getEntriesByType('navigation')[0];
+        const loadTime = perfData.loadEventEnd - perfData.loadEventStart;
+        const domContentLoaded = perfData.domContentLoadedEventEnd - perfData.domContentLoadedEventStart;
+
+        console.log('Page Load Time:', loadTime + 'ms');
+        console.log('DOM Content Loaded:', domContentLoaded + 'ms');
+
+        // Send to analytics if available
+        if (typeof gtag !== 'undefined') {
+          gtag('event', 'timing_complete', {
+            name: 'load',
+            value: Math.round(loadTime)
+          });
+        }
+      }
+    });
+
+    // Track user engagement
+    let startTime = Date.now();
+    let maxScroll = 0;
+
+    window.addEventListener('scroll', function () {
+      const scrollPercent = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
+      maxScroll = Math.max(maxScroll, scrollPercent);
+    });
+
+    window.addEventListener('beforeunload', function () {
+      const timeOnPage = Date.now() - startTime;
+
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'user_engagement', {
+          engagement_time_msec: Math.round(timeOnPage),
+          scroll_percent: maxScroll
+        });
+      }
+    });
+  </script>
+</body>
+
+</html>
